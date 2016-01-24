@@ -21,8 +21,8 @@ public class IndexController {
 
 	@RequestMapping("")
 	public ModelAndView index() {
-		/*student.setFirstName("Claudiu");
-		student.setLastName("Haidu"); */
+		student.setFirstName("Claudiu");
+		student.setLastName("Haidu"); 
 		studentService.save(student);
 		ModelAndView view = new ModelAndView("index");
 		

@@ -1,0 +1,19 @@
+<a href="/doctors/doctor_edit">Add Doctor</a>
+<div style="color:red;" th:text="${err}"></div>
+<table>
+<tr>
+<td>ID</td>
+<td>LastName</td>
+<td>FirstName</td>
+<td>Actions</td>
+</tr>
+<tr th:each="doctor : ${doctors}">
+					<td th:text="${{doctor.id}}"></td>
+					<td th:text="${{doctor.firstName}}"></td>
+					<td th:text="${{doctor.lastName}}"></td>
+					<td>
+						<a th:href="@{/doctors/doctor_edit?id={id}(id=${{doctor.id}})}">Edit Doctor</a>
+						<a th:href="@{/doctors/doctor_delete?id={id}(id=${{doctor.id}})}">Delete Doctor</a>
+					</td>
+</tr>
+</table>

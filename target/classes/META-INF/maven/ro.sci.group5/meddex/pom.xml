@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>ro.sci.group2</groupId>
-	<artifactId>teach_and_learn</artifactId>
+	<groupId>ro.sci.group5</groupId>
+	<artifactId>meddex</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>teach_and_learn</name>
+	<name>meddex</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

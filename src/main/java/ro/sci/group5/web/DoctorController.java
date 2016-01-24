@@ -12,52 +12,47 @@ import ro.sci.group5.domain.Doctor;
 import ro.sci.group5.service.DoctorService;
 
 @Controller
-@RequestMapping("/students")
+@RequestMapping("/doctors")
 public class DoctorController {
 	@Autowired
-	DoctorService studentService;
+	DoctorService doctorService;
 
 	@RequestMapping("")
 	public ModelAndView list() {
-		/*Doctor student=new Doctor();
-		student.setFirstName("gigi");
-		student.setLastName("bee"); 
-		studentService.save(student);*/
-		ModelAndView view = new ModelAndView("student_list");
-		view.addObject("students", studentService.listAll());
-		System.out.println("Apel Metoda Doctor");
+		ModelAndView view = new ModelAndView("doctor_list");
+		view.addObject("doctors", doctorService.listAll());
 		return view;
 	}
 
-	@RequestMapping(value="/",method = RequestMethod.POST)
-	public ModelAndView saveStudent(Doctor student,BindingResult bindingResult) {
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView saveStudent(Doctor doctor,BindingResult bindingResult) {
 		ModelAndView result = list();
 	
 		try {
-			studentService.save(student);
+			doctorService.save(doctor);
 		} catch (Exception e) {			
-			result = renderEditPage(student.getId());	
+			result = renderEditPage(doctor.getId());	
 			bindingResult.addError(new ObjectError("student",e.getMessage()));
 			
 		}
 		return result;
 	}
 
-	@RequestMapping("/student_edit")
+	@RequestMapping("/doctor_edit")
 	public ModelAndView renderEditPage(Long id) {
-		ModelAndView result = new ModelAndView("student_edit");
-		Doctor student= new Doctor();
+		ModelAndView result = new ModelAndView("doctor_edit");
+		Doctor doctor= new Doctor();
 		if (id != null) {
-			student = studentService.findById(id);			
+			doctor = doctorService.findById(id);			
 		}
-		result.addObject("student", student);
+		result.addObject("doctor", doctor);
 		return result;
 	}
 
-	@RequestMapping("/student_delete")
+	@RequestMapping("/doctor_delete")
 	public ModelAndView onDelete(long id) {
 		ModelAndView result = list();
-		if (!studentService.delete(id)) {
+		if (!doctorService.delete(id)) {
 			// bindingResult.addError(new ObjectError("student","ERROR DELETING
 			// INEXISTENT STUDENT!"));
 			result.addObject("error", "ERROR DELETING INEXISTENT STUDENT!");
