@@ -1,5 +1,9 @@
 package ro.sci.group5.domain;
 
+import java.util.ArrayList;
+
+import groovyjarjarantlr.collections.List;
+
 public class Doctor extends AbstractModel {
 	private String firstName;
 	private String lastName;	
@@ -13,7 +17,16 @@ public class Doctor extends AbstractModel {
 	private String specialization1;
 	private String specialization2;
 	
+	public ArrayList<Review> reviewList= new ArrayList<>();
 	
+	public ArrayList<Review> getReviewList() {
+		return reviewList;
+	}
+
+	public void setReviewList(ArrayList<Review> reviewList) {
+		this.reviewList = reviewList;
+	}
+
 	public String getSpecialization1() {
 		return specialization1;
 	}

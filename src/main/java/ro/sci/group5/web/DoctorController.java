@@ -9,38 +9,79 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ro.sci.group5.domain.Doctor;
+import ro.sci.group5.domain.Review;
 import ro.sci.group5.service.DoctorService;
+import ro.sci.group5.service.ReviewService;
 
 @Controller
 @RequestMapping("/doctors")
 public class DoctorController {
 	@Autowired
 	DoctorService doctorService;
+	ReviewService reviewService;
 
 	@RequestMapping("")
 	public ModelAndView list() {
 		ModelAndView view = new ModelAndView("doctor_list");
 		view.addObject("doctors", doctorService.listAll());
 		return view;
-	}
+	}	
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView saveStudent(Doctor doctor,BindingResult bindingResult) {
+	/*@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView saveTheDoctor(Doctor doctor,BindingResult bindingResult) {
 		ModelAndView result = list();
 	
 		try {
 			doctorService.save(doctor);
 		} catch (Exception e) {			
 			result = renderEditPage(doctor.getId());	
+			bindingResult.addError(new ObjectError("doctor",e.getMessage()));
+			
+		}
+		return result;
+	}*/
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView saveDoctor(Long id,Review review,BindingResult bindingResult) {
+		ModelAndView result = list();
+		//ModelAndView resultR = listReview();
+		try {
+			Doctor doctor= new Doctor();
+			if (id != null) {
+				doctor = doctorService.findById(id);			
+			}
+			doctor.reviewList.add(review);
+			
+			for (Review rev: doctor.reviewList){
+				System.out.println("Review-ul fn"+" "+rev.getFirstNameR());
+				System.out.println("Review-ul n"+" "+rev.getName());				
+				System.out.println("Review-ul em"+" "+rev.getrEmail());
+				System.out.println("Review-ul rc"+" "+rev.getReviewContent());
+				System.out.println("Review-ul g"+" "+rev.getGrade());
+			}
+			doctorService.save(doctor);
+		} catch (Exception e) {			
+			//result = renderEditPage(doctor.getId());	
 			bindingResult.addError(new ObjectError("student",e.getMessage()));
 			
 		}
 		return result;
-	}
+	} 
 
 	@RequestMapping("/doctor_edit")
-	public ModelAndView renderEditPage(Long id) {
+	public ModelAndView renderEditPage(Long id, Review review) {
 		ModelAndView result = new ModelAndView("doctor_edit");
+		Doctor doctor= new Doctor();
+		if (id != null) {
+			doctor = doctorService.findById(id);			
+		}
+		result.addObject("doctor", doctor);
+		return result;
+	}
+	
+	@RequestMapping("/doctor_add")
+	public ModelAndView renderEditPage(Long id) {
+		ModelAndView result = new ModelAndView("doctor_add");
 		Doctor doctor= new Doctor();
 		if (id != null) {
 			doctor = doctorService.findById(id);			

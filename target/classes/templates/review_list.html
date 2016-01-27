@@ -1,0 +1,21 @@
+<a href="/reviews/review_add">Add Review</a>
+<table border="1">
+<tr>
+<td>FirstName</td>
+<td>LastName</td>
+<td>Email</td>
+<td>ReviewContent</td>
+<td>Grade</td>
+</tr>
+<tr th:each="review : ${reviews}">
+					<td th:text="${{review.firstName}}"></td>
+					<td th:text="${{review.name}}"></td>
+					<td th:text="${{review.rEmail}}"></td>					
+					<td th:text="${{review.reviewContent}}"></td>
+					<td th:text="${{review.grade}}"></td>
+</tr>
+</table>
+
+<!--<form method="get" action="/reviews?action=addReview">
+    <button type="submit">Add Review</button>
+</form> -->

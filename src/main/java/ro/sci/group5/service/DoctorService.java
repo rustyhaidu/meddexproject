@@ -13,11 +13,11 @@ public class DoctorService {
 	@Autowired
 	private DoctorDao dao;
 
-	public Doctor save(Doctor student) {
-		if (student.getId() <= 0 && !dao.searchByName(student.getLastName()).isEmpty()) {
+	public Doctor save(Doctor doctor) {
+		if (doctor.getId() <= 0 && !dao.searchByName(doctor.getLastName()).isEmpty()) {
 			//throw new IllegalArgumentException("Duplicated Doctor");
 		}
-		return dao.update(student);
+		return dao.update(doctor);
 	}
 
 	public Collection<Doctor> listAll() {
