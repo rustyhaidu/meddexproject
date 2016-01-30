@@ -1,4 +1,8 @@
-<a href= "/students"><button type="submit">Add Doctor</button></a>
+<a href= "/doctors/doctor_add"><button type="submit">Add Doctor</button></a>
+<form action="/doctors/search" method="post">	
+	<input type="text" name="query" placeholder="Search by name" />						
+	<button type="submit" class="btn btn-default">Search</button>
+</form>
 <div style="color:red;" th:text="${err}"></div>
 <table>
 <tr>

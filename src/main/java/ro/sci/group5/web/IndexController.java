@@ -15,27 +15,27 @@ import ro.sci.group5.service.DoctorService;
 public class IndexController {
 	
 	@Autowired
-	DoctorService studentService;
+	DoctorService doctorService;
 	
-	Doctor student = new Doctor();
+	Doctor doctor = new Doctor();
 
 	@RequestMapping("")
 	public ModelAndView index() {
-		student.setFirstName("Claudiu");
-		student.setLastName("Haidu"); 
-		studentService.save(student);
+		doctor.setFirstName("Claudiu");
+		doctor.setLastName("Haidu"); 
+		doctorService.save(doctor);
 		ModelAndView view = new ModelAndView("index");
 		
-		view.addObject(student);
-		System.out.println("Apel Metoda Profile");
+		view.addObject(doctor);
+		//System.out.println("Apel Metoda Profile");
 		return view;
 	} 
 	@RequestMapping(value="/",method = RequestMethod.POST, params = "action=add")
-	public ModelAndView saveStudent(Doctor doctor) {
+	public ModelAndView saveDoctor(Doctor doctor) {
 		System.out.println(doctor.getFirstName()+" "+doctor.getLastName());
 		ModelAndView view = new ModelAndView("index");
-		this.student.setFirstName(doctor.getFirstName());
-		this.student.setLastName(doctor.getLastName());
+		this.doctor.setFirstName(doctor.getFirstName());
+		this.doctor.setLastName(doctor.getLastName());
 		view.addObject(doctor);
 		System.out.println("Apel Metoda SAVE Doctor");
 		System.out.println(doctor.getFirstName()+" "+doctor.getLastName());

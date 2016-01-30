@@ -1,4 +1,10 @@
+
 <a href="/students/student_edit">Add Student</a>
+<div style="color:red;" th:text="${err}"></div>
+<form action="/doctors/search" method="post">	
+	<input type="text" name="query" placeholder="Search by name" />						
+	<button type="submit" class="btn btn-default">Search</button>
+</form>
 <div style="color:red;" th:text="${err}"></div>
 <table>
 <tr>

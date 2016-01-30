@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import ro.sci.group5.dao.StudentDao;
 import ro.sci.group5.domain.Student;
 
+
+
 @Service
 public class StudentService {
 	@Autowired
@@ -34,8 +36,12 @@ public class StudentService {
 	}
 
 	public Student findById(long id) {
-		Student student = dao.findById(id);
+		Student student = dao.findById(id);		
 		return student;
 	}
+	public Collection<Student> findByName(String query){
+		return dao.searchByName(query);
+	}
+	
 
 }

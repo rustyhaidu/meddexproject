@@ -9,17 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ro.sci.group5.domain.Doctor;
-import ro.sci.group5.domain.Student;
 import ro.sci.group5.service.DoctorService;
-import ro.sci.group5.service.StudentService;
+
 
 @Controller
-@RequestMapping("/students")
+@RequestMapping("/doctors/doctor_add")
 public class StudentController {
 	@Autowired
 	DoctorService studentService;
 
-	@RequestMapping("")
+	
 	public ModelAndView list() {
 		ModelAndView view = new ModelAndView("student_list");
 		view.addObject("students", studentService.listAll());
@@ -29,7 +28,7 @@ public class StudentController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView saveStudent(Doctor student,BindingResult bindingResult) {
 		ModelAndView result = list();
-	
+		System.out.println("save Student");
 		try {
 			studentService.save(student);
 		} catch (Exception e) {			
@@ -40,14 +39,18 @@ public class StudentController {
 		return result;
 	}
 
-	@RequestMapping("/student_edit")
+	@RequestMapping("")
 	public ModelAndView renderEditPage(Long id) {
+		System.out.println("Inainte Render Edit page");
+		//ModelAndView result = new ModelAndView("doctor_add");
 		ModelAndView result = new ModelAndView("student_edit");
-		Doctor student= new Doctor();
+		
+		Doctor doctor= new Doctor();
 		if (id != null) {
-			student = studentService.findById(id);			
+			doctor = studentService.findById(id);			
 		}
-		result.addObject("student", student);
+		result.addObject("doctor", doctor);
+		System.out.println("Render Edit page"+" "+ doctor.getFirstName()+" "+doctor.getLastName());
 		return result;
 	}
 

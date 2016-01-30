@@ -15,7 +15,7 @@ public class DoctorService {
 
 	public Doctor save(Doctor doctor) {
 		if (doctor.getId() <= 0 && !dao.searchByName(doctor.getLastName()).isEmpty()) {
-			//throw new IllegalArgumentException("Duplicated Doctor");
+			// throw new IllegalArgumentException("Duplicated Doctor");
 		}
 		return dao.update(doctor);
 	}
@@ -36,6 +36,10 @@ public class DoctorService {
 	public Doctor findById(long id) {
 		Doctor student = dao.findById(id);
 		return student;
+	}
+
+	public Collection<Doctor> findByName(String query) {
+		return dao.searchByName(query);
 	}
 
 }
