@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ro.sci.group5.domain.Doctor;
+import ro.sci.group5.domain.Review;
 import ro.sci.group5.service.DoctorService;
 
 @Controller
@@ -25,6 +26,13 @@ public class IndexController {
 		doctor.setLastName("Haidu"); 
 		doctorService.save(doctor);
 		ModelAndView view = new ModelAndView("index");
+		// hardcode of a review
+		  Review review = new Review();
+		  review.setFirstNameR("Reviewer first name");
+		  review.setName("Reviewer last name");
+		  review.setGrade(2);
+		  review.setrEmail("Reviewer@yahoo.com");
+		  review.setReviewContent("minunat");
 		
 		view.addObject(doctor);
 		//System.out.println("Apel Metoda Profile");

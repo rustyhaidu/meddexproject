@@ -40,7 +40,7 @@ public class StudentsControl {
 		return result;
 	}
 
-	/*@RequestMapping("/student_edit")
+	@RequestMapping("/student_edit")
 	public ModelAndView renderEditPage(Long id) {
 		ModelAndView result = new ModelAndView("student_edit");
 		Doctor student= new Doctor();
@@ -66,6 +66,6 @@ public class StudentsControl {
 		ModelAndView result = list();
 		result.addObject("doctors",studentService.findByName(query));
 		return result;
-	}*/
+	}
 
 }

@@ -1,0 +1,18 @@
+<table border="1">
+<tr>
+<td>FirstName</td>
+<td>LastName</td>
+<td>Email</td>
+<td>ReviewContent</td>
+<td>Grade</td>
+</tr>
+<tr th:each="review : ${reviews}">
+					<td th:text="${{review.firstNameR}}"></td>
+					<td th:text="${{review.name}}"></td>
+					<td th:text="${{review.rEmail}}"></td>					
+					<td th:text="${{review.reviewContent}}"></td>
+					<td th:text="${{review.grade}}"></td>
+</tr>
+</table> 
+
+

@@ -88,6 +88,18 @@ public class DoctorReviewController {
 		result.addObject("reviews", doctor.reviewList);
 		return result;
 	}
+
+	@RequestMapping("/reviewurile")
+	public ModelAndView renderReviewPage(Long id, Review review) {
+		ModelAndView result = new ModelAndView("reviewurile");
+		Doctor doctor= new Doctor();
+		if (id != null) {
+			doctor = doctorService.findById(id);			
+		}
+		result.addObject("doctor", doctor);
+		result.addObject("reviews", doctor.reviewList);
+		return result;
+	}
 	
 	/*@RequestMapping("/doctor_add")
 	public ModelAndView renderAddPage(Long id) {
