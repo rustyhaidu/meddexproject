@@ -14,7 +14,7 @@ import ro.sci.group5.service.DoctorService;
 import ro.sci.group5.service.StudentService;
 
 @Controller
-@RequestMapping("/doctors/doctor_add")
+@RequestMapping("/doctors/doctor_edit")
 public class DoctorController {
 	@Autowired
 	DoctorService doctorService;

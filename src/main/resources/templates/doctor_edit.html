@@ -6,7 +6,6 @@
 First Name:<input name = "firstName" th:value="${doctor.firstName}"/><br/>
 Last Name:<input name = "lastName" th:value="${doctor.lastName}"/><br/>
 <input type="hidden" th:value="${doctor.id}" name="id"/>
-
 <br/>
 
 First Name:<input name = "firstNameR" th:value="${review.firstNameR}"/><br/>
@@ -17,6 +16,25 @@ Grade:<input name = "grade" th:value="${review.grade}"/><br/>
 <input type="hidden" th:value="${review.id}" name="id"/>
 <input type="submit" value="Save Review" />
 </form>
+
+
+<table border="1">
+<tr>
+<td>FirstName</td>
+<td>LastName</td>
+<td>Email</td>
+<td>ReviewContent</td>
+<td>Grade</td>
+</tr>
+<tr th:each="review : ${reviews}">
+					<td th:text="${{review.firstNameR}}"></td>
+					<td th:text="${{review.name}}"></td>
+					<td th:text="${{review.rEmail}}"></td>					
+					<td th:text="${{review.reviewContent}}"></td>
+					<td th:text="${{review.grade}}"></td>
+</tr>
+</table>
+
 
 
 </html>

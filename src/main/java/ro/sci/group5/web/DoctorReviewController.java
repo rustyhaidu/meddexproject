@@ -51,6 +51,7 @@ public class DoctorReviewController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView saveDoctor(Long id,Review review,BindingResult bindingResult) {
 		ModelAndView result = list();
+		//ModelAndView result = new ModelAndView("doctor_edit");
 		//ModelAndView resultR = listReview();
 		try {
 			Doctor doctor= new Doctor();
@@ -66,7 +67,8 @@ public class DoctorReviewController {
 				System.out.println("Review-ul rc"+" "+rev.getReviewContent());
 				System.out.println("Review-ul g"+" "+rev.getGrade());
 			}
-			doctorService.save(doctor);
+			doctorService.save(doctor);			
+			
 		} catch (Exception e) {			
 			//result = renderEditPage(doctor.getId());	
 			bindingResult.addError(new ObjectError("doctor",e.getMessage()));
@@ -83,6 +85,7 @@ public class DoctorReviewController {
 			doctor = doctorService.findById(id);			
 		}
 		result.addObject("doctor", doctor);
+		result.addObject("reviews", doctor.reviewList);
 		return result;
 	}
 	

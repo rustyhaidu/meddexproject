@@ -33,14 +33,14 @@ public class StudentsControl {
 		try {
 			studentService.save(student);
 		} catch (Exception e) {			
-			result = renderEditPage(student.getId());	
+			//result = renderEditPage(student.getId());	
 			bindingResult.addError(new ObjectError("student",e.getMessage()));
 			
 		}
 		return result;
 	}
 
-	@RequestMapping("/student_edit")
+	/*@RequestMapping("/student_edit")
 	public ModelAndView renderEditPage(Long id) {
 		ModelAndView result = new ModelAndView("student_edit");
 		Doctor student= new Doctor();
@@ -66,6 +66,6 @@ public class StudentsControl {
 		ModelAndView result = list();
 		result.addObject("doctors",studentService.findByName(query));
 		return result;
-	}
+	}*/
 
 }
