@@ -31,6 +31,41 @@ public class ReviewurileController {
 		result.addObject("reviews", doctor.reviewList);
 		return result;
 	}
+/*	@RequestMapping("")
+	public ModelAndView list() {
+		ModelAndView view = new ModelAndView("reviewurile");
+		view.addObject("doctors", doctorService.listAll());
+		return view;
+	}*/	
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView saveDoctor(Long id,Review review,BindingResult bindingResult) {
+		ModelAndView result = list(id);
+		//ModelAndView result = new ModelAndView("doctor_edit");
+		//ModelAndView resultR = listReview();
+		try {
+			Doctor doctor= new Doctor();
+			if (id != null) {
+				doctor = doctorService.findById(id);			
+			}
+			doctor.reviewList.add(review);
+			
+			for (Review rev: doctor.reviewList){
+				System.out.println("Review-ul fn"+" "+rev.getFirstNameR());
+				System.out.println("Review-ul n"+" "+rev.getName());				
+				System.out.println("Review-ul em"+" "+rev.getrEmail());
+				System.out.println("Review-ul rc"+" "+rev.getReviewContent());
+				System.out.println("Review-ul g"+" "+rev.getGrade());
+			}
+			doctorService.save(doctor);			
+			
+		} catch (Exception e) {			
+			//result = renderEditPage(doctor.getId());	
+			bindingResult.addError(new ObjectError("doctor",e.getMessage()));
+			
+		}
+		return result;
+	} 
 	
 
 }

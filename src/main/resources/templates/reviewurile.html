@@ -1,3 +1,4 @@
+<a th:href="@{/doctors/doctor_edit?id={id}(id=${{doctor.id}})}">Add new Review</a>
 <table border="1">
 <tr>
 <td>FirstName</td>
@@ -12,6 +13,7 @@
 					<td th:text="${{review.rEmail}}"></td>					
 					<td th:text="${{review.reviewContent}}"></td>
 					<td th:text="${{review.grade}}"></td>
+					
 </tr>
 </table> 
 
