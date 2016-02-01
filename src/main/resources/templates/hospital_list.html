@@ -1,4 +1,6 @@
 <a href="/hospitals/hospital_add">Add Hospital</a>
+
+<a href="/hospitals/doctorToHospitalAdd">Add Doctor To Hospital</a>
 <a href= "/"><button type="submit">Home</button></a>
 
 
@@ -21,12 +23,13 @@
 					<td th:text="${{hospital.phoneNumber}}"></td>
 					<td th:text="${{hospital.hospitalEmail}}"></td>
 					<td th:text="${{hospital.listOfDoctors}}"></td>
+					<td>
+					    <a th:href="@{/doctors/doctor_edit?id={id}(id=${{doctor.id}})}">Edit Doctor</a> -->
+					  	<a th:href="@{/doctors/doctor_delete?id={id}(id=${{doctor.id}})}">Delete Doctor</a> -->
+					 	<a th:href="@{/review_list?id={id}(id=${{doctor.id}})}">Reviews of the Doctor</a>						
+					</td>
 </tr>
 </table>
 
 
-<!--<form method="get" action="/hospitals?action=add">
-    <button type="submit">Add Hospital</button>
-</form> -->
 
-<a href= "/hospitals?action=add"><button type="submit">Add Hospital</button></a>

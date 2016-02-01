@@ -6,18 +6,37 @@ import groovyjarjarantlr.collections.List;
 
 public class Doctor extends AbstractModel {
 	private String firstName;
-	private String lastName;	
+	private String lastName;
 	private String hospital1;
 	private String hospital2;
 	private String titleDoctor;
 	private int phoneNumber;
-	private String email;
+	private String doctorEmail;
+	
 	private boolean showPhoneNumber;
+	
+
 	private boolean showEmail;
+	public boolean isShowEmail() {
+		return showEmail;
+	}
+
+	public void setShowEmail(boolean showEmail) {
+		this.showEmail = showEmail;
+	}
+
 	private String specialization1;
 	private String specialization2;
 	
 	public ArrayList<Review> reviewList= new ArrayList<>();
+	
+	public boolean isShowPhoneNumber() {
+		return showPhoneNumber;
+	}
+
+	public void setShowPhoneNumber(boolean showPhoneNumber) {
+		this.showPhoneNumber = showPhoneNumber;
+	}
 	
 	public ArrayList<Review> getReviewList() {
 		return reviewList;
@@ -55,9 +74,9 @@ public class Doctor extends AbstractModel {
 		return hospital2;
 	}
 
-	public void setHospital2(String hospital2) {
+	/*public void setHospital2(Hospital hospital2) {
 		this.hospital2 = hospital2;
-	}
+	}*/
 
 	public String getTitleDoctor() {
 		return titleDoctor;
@@ -73,31 +92,8 @@ public class Doctor extends AbstractModel {
 
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
+	}	
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public boolean isShowPhoneNumber() {
-		return showPhoneNumber;
-	}
-
-	public void setShowPhoneNumber(boolean showPhoneNumber) {
-		this.showPhoneNumber = showPhoneNumber;
-	}
-
-	public boolean isShowEmail() {
-		return showEmail;
-	}
-
-	public void setShowEmail(boolean showEmail) {
-		this.showEmail = showEmail;
-	}
 
 	public  Doctor(String firstName, String lastName){
 		this.firstName = firstName;
@@ -119,7 +115,15 @@ public class Doctor extends AbstractModel {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public String getDoctorEmail() {
+		return doctorEmail;
+	}
 
+	public void setDoctorEmail(String doctorEmail) {
+		this.doctorEmail = doctorEmail;
+	}
+
+	
 	public Doctor(long id) {
 		setId(id);
 	}

@@ -14,7 +14,7 @@ import ro.sci.group5.service.DoctorService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = MeddexApplication.class)
-public class StudentServiceTest {
+public class DoctorServiceTest {
 
 	@Autowired
 	private DoctorService service;
@@ -27,7 +27,7 @@ public class StudentServiceTest {
 	}
 
 	@Test
-	public void testSaveNewStudent() {
+	public void testSaveNewDoctor() {
 		Doctor student = new Doctor();
 		student.setFirstName("Gigi");
 		student.setLastName("Beeeeecali");
@@ -38,7 +38,7 @@ public class StudentServiceTest {
 	}
 
 	@Test
-	public void testSaveExistingStudent() {
+	public void testSaveExistingDoctor() {
 		Doctor student = new Doctor();
 		student.setFirstName("Gigi");
 		student.setLastName("Beeeeecali");
@@ -49,22 +49,22 @@ public class StudentServiceTest {
 	}
 	@Test
 	public void testDeleteStudent() {
-		Doctor student = new Doctor();
-		student.setFirstName("Gigi");
-		student.setLastName("Beeeeecali");
-		Doctor savedStudent = service.save(student);
+		Doctor doctor = new Doctor();
+		doctor.setFirstName("Gigi");
+		doctor.setLastName("Beeeeecali");
+		Doctor savedStudent = service.save(doctor);
 		Assert.assertTrue(service.delete(savedStudent.getId()));		
 		Assert.assertNull(service.findById(savedStudent.getId()));		
 	}
 	@Test
 	public void testDoubleDeletionStudent() {
-		Doctor student = new Doctor();
-		student.setFirstName("Gigi");
-		student.setLastName("Beeeeecali");
-		Doctor savedStudent = service.save(student); //save returns Doctor
-		Assert.assertTrue(service.delete(savedStudent.getId())); //delete and findById return boolean
-		Assert.assertFalse(service.delete(savedStudent.getId()));
-		Assert.assertNull(service.findById(savedStudent.getId()));		
+		Doctor doctor = new Doctor();
+		doctor.setFirstName("Gigi");
+		doctor.setLastName("Beeeeecali");
+		Doctor doctorSaved = service.save(doctor); //save returns Doctor
+		Assert.assertTrue(service.delete(doctorSaved.getId())); //delete and findById return boolean
+		Assert.assertFalse(service.delete(doctorSaved.getId()));
+		Assert.assertNull(service.findById(doctorSaved.getId()));		
 	}
 	@Test
 	public void testDeleteInexistingStudent() {		

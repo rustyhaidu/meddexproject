@@ -25,11 +25,11 @@ public class DoctorService {
 	}
 
 	public boolean delete(long id) {
-		Doctor student = dao.findById(id);
-		if (student == null) {
+		Doctor doctor = dao.findById(id);
+		if (doctor == null) {
 			return false;
 		} else {
-			return dao.delete(student);
+			return dao.delete(doctor);
 		}
 	}
 

@@ -50,6 +50,16 @@ public class IndexController {
 		ModelAndView view = new ModelAndView("index");
 		this.doctor.setFirstName(doctor.getFirstName());
 		this.doctor.setLastName(doctor.getLastName());
+		this.doctor.setDoctorEmail(doctor.getDoctorEmail());
+		this.doctor.setPhoneNumber(doctor.getPhoneNumber());
+		this.doctor.setHospital1(doctor.getHospital1());
+		this.doctor.setHospital1(doctor.getHospital2());
+		this.doctor.setShowPhoneNumber(doctor.isShowPhoneNumber());
+		this.doctor.setShowPhoneNumber(doctor.isShowPhoneNumber());
+		this.doctor.setSpecialization1(doctor.getSpecialization1());
+		this.doctor.setSpecialization2(doctor.getSpecialization2());
+		this.doctor.setShowEmail(doctor.isShowEmail());
+		this.doctor.setTitleDoctor(doctor.getTitleDoctor());
 		view.addObject(doctor);
 		System.out.println("Apel Metoda SAVE Doctor");
 		System.out.println(doctor.getFirstName()+" "+doctor.getLastName());

@@ -112,9 +112,9 @@
 							<label>Specializare2:</label><input type="text" size="20x" name="specialization2" th:value="${doctor.specialization2}"/><br/>
 							<label>Titlu Medic:</label><input type="text" size="20x" name="titleDoctor" th:value="${doctor.titleDoctor}"/><br/>
 							<label>Numar Telefon:</label><input type="text" size="20x" name="phoneNumber" th:value="${doctor.phoneNumber}"/>
-							<input type="checkbox" name="showEmail" th:checked="${doctor.showEmail}"/> Vreau afisarea numarului<br/>
-							<label>Email:</label><input type="text" size="20x" name="email" th:value="${doctor.email}"/>
-							<input type="checkbox" name="showPhoneNumber" th:checked="${doctor.showEmail}"/> Vreau afisarea Email-ului<br/>
+							<input type="checkbox" name="showPhoneNumber" th:checked="${doctor.showPhoneNumber}"/> Vreau afisarea numarului<br/>
+							<label>Email:</label><input type="text" size="20x" name="doctorEmail" th:value="${doctor.doctorEmail}"/>
+							<input type="checkbox" name="showEmail" th:checked="${doctor.showEmail}"/> Vreau afisarea Email-ului<br/>
 							<br/>
 							
 							<input type="submit" value="Salvare Detalii Profil"/>
