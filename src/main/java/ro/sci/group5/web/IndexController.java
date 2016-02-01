@@ -23,16 +23,22 @@ public class IndexController {
 	@RequestMapping("")
 	public ModelAndView index() {
 		doctor.setFirstName("Claudiu");
-		doctor.setLastName("Haidu"); 
-		doctorService.save(doctor);
-		ModelAndView view = new ModelAndView("index");
+		doctor.setLastName("Haidu");
+		
 		// hardcode of a review
-		  Review review = new Review();
-		  review.setFirstNameR("Reviewer first name");
-		  review.setName("Reviewer last name");
-		  review.setGrade(2);
-		  review.setrEmail("Reviewer@yahoo.com");
-		  review.setReviewContent("minunat");
+		Review review = new Review();
+		review.setFirstNameR("Reviewer first name");
+		review.setName("Reviewer last name");
+		review.setGrade(2);
+		review.setrEmail("Reviewer@yahoo.com");
+		review.setReviewContent("minunat");
+		
+		doctor.reviewList.add(review);
+		
+		doctorService.save(doctor);
+		
+		ModelAndView view = new ModelAndView("index");
+		view.addObject("reviews", doctor.reviewList);
 		
 		view.addObject(doctor);
 		//System.out.println("Apel Metoda Profile");

@@ -1,0 +1,32 @@
+<a href="/hospitals/hospital_add">Add Hospital</a>
+<a href= "/"><button type="submit">Home</button></a>
+
+
+<table>
+<tr>
+<td>Name</td>
+<td>Street</td>
+<td>Street number</td>
+<td>Neighborhood</td>
+<td>Phone number</td>
+<td>Email</td>
+<td>Doctors</td>
+</tr>
+
+<tr th:each="hospital : ${hospitals}">
+					<td th:text="${{hospital.hospitalName}}"></td>
+					<td th:text="${{hospital.streetName}}"></td>
+					<td th:text="${{hospital.streetNumber}}"></td>
+					<td th:text="${{hospital.neighbourhood}}"></td>
+					<td th:text="${{hospital.phoneNumber}}"></td>
+					<td th:text="${{hospital.hospitalEmail}}"></td>
+					<td th:text="${{hospital.listOfDoctors}}"></td>
+</tr>
+</table>
+
+
+<!--<form method="get" action="/hospitals?action=add">
+    <button type="submit">Add Hospital</button>
+</form> -->
+
+<a href= "/hospitals?action=add"><button type="submit">Add Hospital</button></a>

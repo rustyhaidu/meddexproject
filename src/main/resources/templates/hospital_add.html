@@ -1,0 +1,19 @@
+<html>
+<a href= "/"><button type="submit">Home</button></a>
+
+<form action="/hospitals" method="post">
+<div style="color:red;" th:text="${err}"></div>
+
+Hospital Name:<input name = "hospitalName" th:value="${hospital.hospitalName}"/><br/>
+Street:<input name = "streetName" th:value="${hospital.streetName}"/><br/>
+Street number:<input name = "streetNumber" th:value="${hospital.streetNumber}"/><br/>
+Neighborhood:<input name = "neighbourhood" th:value="${hospital.neighbourhood}"/><br/>
+Phone number:<input name = "phoneNumber" th:value="${hospital.phoneNumber}"/><br/>
+Email:<input name = "hospitalEmail" th:value="${hospital.hospitalEmail}"/><br/>
+
+<input type="hidden" th:value="${hospital.id}" name="id"/>
+<input type="submit" value="Save" />
+</form>
+
+
+</html>

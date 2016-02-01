@@ -1,14 +1,15 @@
 <html>
+<a href= "/"><button type="submit">Home</button></a>
 
 
-<form action="/reviews" method="post">
+<form action="/review_list" method="post">
 <div style="color:red;" th:text="${err}"></div>
-First Name:<input name = "firstName" th:value="${review.firstName}"/><br/>
+First Name:<input name = "firstNameR" th:value="${review.firstNameR}"/><br/>
 Last Name:<input name = "name" th:value="${review.name}"/><br/>
 Email:<input name = "rEmail" th:value="${review.rEmail}"/><br/>
 ReviewContent:<input name = "reviewContent" th:value="${review.reviewContent}"/><br/>
 Grade:<input name = "grade" th:value="${review.grade}"/><br/>
-<input type="hidden" th:value="${review.id}" name="id"/>
+<input type="hidden" th:value="${doctor.id}" name="id"/>
 <input type="submit" value="Save" />
 </form>
 

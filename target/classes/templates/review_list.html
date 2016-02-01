@@ -1,4 +1,5 @@
-<a href="/reviews/review_add">Add Review</a>
+<a th:href="@{/doctors/review_add?id={id}(id=${{doctor.id}})}">Add Review</a>
+<a href= "/"><button type="submit">Home</button></a>
 <table border="1">
 <tr>
 <td>FirstName</td>
@@ -8,14 +9,14 @@
 <td>Grade</td>
 </tr>
 <tr th:each="review : ${reviews}">
-					<td th:text="${{review.firstName}}"></td>
+					<td th:text="${{review.firstNameR}}"></td>
 					<td th:text="${{review.name}}"></td>
 					<td th:text="${{review.rEmail}}"></td>					
 					<td th:text="${{review.reviewContent}}"></td>
-					<td th:text="${{review.grade}}"></td>
+					<td th:text="${{review.grade}}"></td>					
 </tr>
 </table>
 
-<!--<form method="get" action="/reviews?action=addReview">
+<!--<form method="get" action="/review_list?action=addReview">
     <button type="submit">Add Review</button>
 </form> -->
