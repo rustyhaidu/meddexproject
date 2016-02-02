@@ -43,9 +43,9 @@ public class HospitalController {
 		return result;
 	}
 	
-	@RequestMapping("/hospital_add")
+	@RequestMapping("/hospital_edit")
 	public ModelAndView renderEditPage(Long id) {
-		ModelAndView result = new ModelAndView("hospital_add");
+		ModelAndView result = new ModelAndView("hospital_edit");
 		Hospital hospital = new Hospital();
 		if (id != null) {
 			hospital = hospitalService.findById(id);
