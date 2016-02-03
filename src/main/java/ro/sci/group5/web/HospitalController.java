@@ -53,6 +53,14 @@ public class HospitalController {
 		result.addObject("hospital", hospital);
 		return result;
 	}
+	@RequestMapping("/hospital_delete")
+	public ModelAndView onDelete(long id) {
+		ModelAndView result = list();
+		if (!hospitalService.delete(id)) {					
+			result.addObject("error", "ERROR DELETING INEXISTENT HOSPITAL!");
+		}
+		return result;
+	}
 	
 	
 

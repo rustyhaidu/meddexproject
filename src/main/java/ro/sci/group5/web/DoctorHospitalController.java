@@ -13,7 +13,7 @@ import ro.sci.group5.service.DoctorService;
 import ro.sci.group5.service.ReviewService;
 
 @Controller
-@RequestMapping("/hospitals/doctorToHospitalAdd")
+@RequestMapping("/doctorToHospitalAdd")
 public class DoctorHospitalController {
 	@Autowired
 	DoctorService doctorService;
@@ -21,13 +21,13 @@ public class DoctorHospitalController {
 
 	@RequestMapping("")
 	public ModelAndView list() {
-		ModelAndView view = new ModelAndView("doctor_list");
-		view.addObject("doctors", doctorService.listAll());
+		ModelAndView view = new ModelAndView("doctorToHospitalAdd");
+		view.addObject("allTypes", populateTypes());
 		return view;
 	}	
 	
 	
-	/*@RequestMapping("")
+	
     public List<Type> populateTypes() { 
         Type type1 = new Type(); 
         type1.setId(1); 
@@ -41,6 +41,6 @@ public class DoctorHospitalController {
         tipos.add(type1); 
         tipos.add(type2); 
         return tipos; 
-    } */
+    } 
 
 }

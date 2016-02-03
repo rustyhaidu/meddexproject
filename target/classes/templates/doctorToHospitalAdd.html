@@ -1,4 +1,8 @@
-s<html>
-<option th:each="type : ${allTypes}" th:value="${type.id}" th:text="${type.type}">Wireframe</option>
 
+<html>
+ 
+<select>
+	<option th:each="type : ${allTypes}" th:value="${{type.type}}"
+		th:text="${{type.type}}">Wireframe</option>
+</select>
 </html>
