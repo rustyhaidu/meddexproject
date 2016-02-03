@@ -1,8 +1,26 @@
 
 <html>
  
-<select>
-	<option th:each="type : ${allTypes}" th:value="${{type.type}}"
-		th:text="${{type.type}}">Wireframe</option>
+<form action="/doctorsOfTheHospital" method="post">
+  <select>
+  	<option selected="true" style="display:none;">Selecteaza Doctor</option>
+	<option th:each="doctor : ${doctors}" th:value="${{doctor.id}}"
+		th:text="${{doctor.firstName+' '+doctor.lastName}}">Wireframe</option>
 </select>
+<br/>
+<select>
+ 	<option selected="true" style="display:none;">Selecteaza Spital</option>
+	<option th:each="hospital : ${hospitals}" th:value="${{hospital.hospitalName}}"
+		th:text="${{hospital.hospitalName}}">Wireframe</option>
+ </select>
+ <br/>
+ <input type="submit" value="Save Doctor to Hospital" />
+</form>
+
+  
+<!-- <select>
+	<option th:each="type : ${alltypes}" th:value="${{type.type}}"
+		th:text="${{type.type}}">Wireframe</option>
+</select> -->
+
 </html>

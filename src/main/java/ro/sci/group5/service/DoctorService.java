@@ -34,8 +34,8 @@ public class DoctorService {
 	}
 
 	public Doctor findById(long id) {
-		Doctor student = dao.findById(id);
-		return student;
+		Doctor doctor = dao.findById(id);
+		return doctor;
 	}
 
 	public Collection<Doctor> findByName(String query) {

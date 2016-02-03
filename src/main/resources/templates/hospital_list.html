@@ -1,6 +1,6 @@
 <a href="/hospitals/hospital_edit">Add Hospital</a>
-<a href= "/"><button type="submit">Home</button></a>
-
+<a href= "/"><button type="submit">Home</button></a><br/>
+<a href= "/doctorToHospitalAdd"><button type="submit">Add doctor to hospital</button></a>
 
 <table>
 <tr>
@@ -23,8 +23,8 @@
 					<td th:text="${{hospital.listOfDoctors}}"></td>
 					<td>
 						<a th:href="@{/hospitals/hospital_edit?id={id}(id=${{hospital.id}})}">Edit hospital's details</a>
-						<a th:href="@{/hospitals/hospital_delete?id={id}(id=${{hospital.id}})}">Delete hospital</a>
-						<a th:href="@{/doctorToHospitalAdd?id={id}(id=${{hospital.id}})}">View all doctors of the hospital</a>				
+						<a th:href="@{/hospitals/hospital_delete?id={id}(id=${{hospital.id}})}">Delete hospital</a>						
+						<a th:href="@{/doctorsOfTheHospital/?id={id}(id=${{hospital.id}})}">View Doctors</a>			
 					</td>
 </tr>
 </table>

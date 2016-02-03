@@ -9,14 +9,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ro.sci.group5.domain.Doctor;
+import ro.sci.group5.domain.Hospital;
 import ro.sci.group5.domain.Review;
 import ro.sci.group5.service.DoctorService;
+import ro.sci.group5.service.HospitalService;
+import ro.sci.group5.service.ReviewService;
 
 @Controller
 public class IndexController {
 	
 	@Autowired
 	DoctorService doctorService;
+	@Autowired
+	HospitalService hospitalService;
+	@Autowired
+	ReviewService reviewService;
 	
 	Doctor doctor = new Doctor();
 
@@ -37,11 +44,16 @@ public class IndexController {
 		
 		doctorService.save(doctor);
 		
+		// hardcode of a hospital
+		Hospital hospital = new Hospital();
+		hospital.setHospitalName("Spital de Nebuni");
+		hospitalService.save(hospital);
+		
 		ModelAndView view = new ModelAndView("index");
-		view.addObject("reviews", doctor.reviewList);
+		//view.addObject("reviews", doctor.reviewList);		
 		
 		view.addObject(doctor);
-		//System.out.println("Apel Metoda Profile");
+		
 		return view;
 	} 
 	@RequestMapping(value="/",method = RequestMethod.POST, params = "action=add")
