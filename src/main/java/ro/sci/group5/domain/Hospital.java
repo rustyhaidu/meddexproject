@@ -9,7 +9,7 @@ public class Hospital extends AbstractModel {
 	private String neighbourhood;
 	private String phoneNumber;
 	private String hospitalEmail;
-	private ArrayList<Doctor> listOfDoctors;
+	public ArrayList<Doctor> listOfDoctors;
 	
 	
 	public String getHospitalName() {

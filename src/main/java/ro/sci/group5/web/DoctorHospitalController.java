@@ -3,6 +3,8 @@ package ro.sci.group5.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ro.sci.group5.service.DoctorService;
@@ -23,4 +25,5 @@ public class DoctorHospitalController {
 		view.addObject("doctors", doctorService.listAll());
 		return view;
 	}
+	
 }	
