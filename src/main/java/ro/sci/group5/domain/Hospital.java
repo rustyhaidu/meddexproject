@@ -9,7 +9,8 @@ public class Hospital extends AbstractModel {
 	private String neighbourhood;
 	private String phoneNumber;
 	private String hospitalEmail;
-	public ArrayList<Doctor> listOfDoctors;
+	public ArrayList<Doctor> listOfDoctors = new ArrayList<>();
+	//public HashMap<Long, Doctor> listOfDoctors= new HashMap<>();
 	
 	
 	public String getHospitalName() {
@@ -48,13 +49,7 @@ public class Hospital extends AbstractModel {
 	public void setHospitalEmail(String hospitalEmail) {
 		this.hospitalEmail = hospitalEmail;
 	}
-	public ArrayList<Doctor> getListOfDoctors() {
-		return listOfDoctors;
-	}
-	public void setListOfDoctors(ArrayList<Doctor> listOfDoctors) {
-		this.listOfDoctors = listOfDoctors;
-	}
-	
+		
 	public Hospital(long id) {
 		setId(id);
 	}
