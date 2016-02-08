@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ro.sci.group5.domain.Doctor;
 import ro.sci.group5.domain.Hospital;
 import ro.sci.group5.domain.Review;
-import ro.sci.group5.domain.Type;
+
 import ro.sci.group5.service.DoctorService;
 import ro.sci.group5.service.HospitalService;
 

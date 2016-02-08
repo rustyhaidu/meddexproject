@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ro.sci.group5.domain.Hospital;
-import ro.sci.group5.domain.Type;
 import ro.sci.group5.service.HospitalService;
 
 @Controller

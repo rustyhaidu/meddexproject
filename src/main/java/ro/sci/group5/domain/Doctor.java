@@ -10,13 +10,18 @@ public class Doctor extends AbstractModel {
 	private String hospital1;
 	private String hospital2;
 	private String titleDoctor;
-	private int phoneNumber;
+	private String phoneNumber;
 	private String doctorEmail;
 	
 	private boolean showPhoneNumber;
 	
 
 	private boolean showEmail;
+	private String specialization1;
+	private String specialization2;
+	
+	public ArrayList<Review> reviewList= new ArrayList<>();
+	
 	public boolean isShowEmail() {
 		return showEmail;
 	}
@@ -25,10 +30,9 @@ public class Doctor extends AbstractModel {
 		this.showEmail = showEmail;
 	}
 
-	private String specialization1;
-	private String specialization2;
 	
-	public ArrayList<Review> reviewList= new ArrayList<>();
+	
+	
 	
 	public boolean isShowPhoneNumber() {
 		return showPhoneNumber;
@@ -74,9 +78,9 @@ public class Doctor extends AbstractModel {
 		return hospital2;
 	}
 
-	/*public void setHospital2(Hospital hospital2) {
+	public void setHospital2(String hospital2) {
 		this.hospital2 = hospital2;
-	}*/
+	}
 
 	public String getTitleDoctor() {
 		return titleDoctor;
@@ -86,11 +90,11 @@ public class Doctor extends AbstractModel {
 		this.titleDoctor = titleDoctor;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}	
 

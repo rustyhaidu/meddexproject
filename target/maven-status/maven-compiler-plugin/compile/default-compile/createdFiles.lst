@@ -4,11 +4,9 @@ ro\sci\group5\domain\Student.class
 ro\sci\group5\domain\Review.class
 ro\sci\group5\web\IndexController.class
 ro\sci\group5\domain\Doctor.class
-ro\sci\group5\dao\DoctorReviewDao.class
 ro\sci\group5\dao\inmemory\IMReviewDAO.class
 ro\sci\group5\dao\inmemory\IMDoctorDAO.class
 ro\sci\group5\service\DoctorService.class
-ro\sci\group5\service\DoctorReviewService.class
 ro\sci\group5\dao\BaseDAO.class
 ro\sci\group5\dao\DoctorDao.class
 ro\sci\group5\domain\AbstractModel.class

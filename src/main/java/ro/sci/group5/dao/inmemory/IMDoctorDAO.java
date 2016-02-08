@@ -10,7 +10,7 @@ import org.springframework.util.StringUtils;
 import ro.sci.group5.dao.DoctorDao;
 import ro.sci.group5.domain.Doctor;
 
-@Repository
+//@Repository
 public class IMDoctorDAO extends IMBaseDAO<Doctor> implements DoctorDao {
 
 	@Override
