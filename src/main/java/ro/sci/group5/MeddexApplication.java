@@ -19,11 +19,11 @@ public class MeddexApplication {
 	
 	@Bean
 	public DoctorDao doctorDao() {
-		return new JDBCDoctorDAO("localhost", "5432", "test", "test", "test");
-				/*new JDBCDoctorDAO("ec2-54-235-152-114.compute-1.amazonaws.com",
-				"5432", "debvjrj4023nfd",
-				"ypsrfyzvblpwsg", 
-				"ISY2KvbIISXDHjwdVd-7egvk2o");*/					
+		return //new JDBCDoctorDAO("localhost", "5432", "test", "test", "test");
+				new JDBCDoctorDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com",
+				"5432", "d74krrcumptmn8",
+				"krqitchudqnhbc", 
+				"2AC2l0pO26pUmP-6kQprCguYQr");					
 				
 	}
 
