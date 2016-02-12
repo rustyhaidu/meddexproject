@@ -107,8 +107,8 @@
 
 						<form action="/doctors" method="post">
 							<div style="color: red;" th:text="${err}"></div>
+							Prenume:<input name="firstName" th:value="${doctor.firstName}" /> <br/>
 							Nume:<input name="lastName" th:value="${doctor.lastName}" /><br />
-
 							Titlu Doctor:<input name="titleDoctor"
 								th:value="${doctor.titleDoctor}" /><br /> Numar Telefon:<input
 								name="phoneNumber" th:value="${doctor.phoneNumber}" /><br />
