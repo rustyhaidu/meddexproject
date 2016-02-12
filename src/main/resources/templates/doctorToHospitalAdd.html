@@ -107,17 +107,17 @@
 						<form action="/doctorsOfTheHospital" method="post">
 
 							<select id="doctorID" name="doctorID">
-
-								<option name="id" th:each="doctor : ${doctors}"
+								
+								<option  th:each="doctor : ${doctors}"
 									th:value="${{doctor.id}}"
 									th:text="${{doctor.firstName+' '+doctor.lastName}}"
-									th:selected="${{doctor.id}}">Wireframe</option>
+									>Wireframe</option>
 							</select> <select id="hospitalID" name="hospitalID">
-
-								<option name="id" th:each="hospital : ${hospitals}"
+								 
+								<option th:each="hospital : ${hospitals}"
 									th:value="${{hospital.id}}"
 									th:text="${{hospital.hospitalName}}"
-									th:selected="${{hospital.id}}">Wireframe</option>
+									>Wireframe</option>
 							</select> <input type="submit" value="Save Doctor to Hospital" />
 						</form>
 						<!--  <h4 class="pull-right">$24.99</h4>

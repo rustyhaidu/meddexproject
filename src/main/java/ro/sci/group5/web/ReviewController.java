@@ -1,4 +1,4 @@
-package ro.sci.group5.web;
+/*package ro.sci.group5.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import ro.sci.group5.service.DoctorService;
 import ro.sci.group5.service.ReviewService;
 
 @Controller
-@RequestMapping("/review_list")
+@RequestMapping("/reviews")
 public class ReviewController {
 	@Autowired
 	DoctorService doctorService;
@@ -44,7 +44,7 @@ public class ReviewController {
 
 			for (Review rev : doctor.reviewList) {
 				System.out.println("Review-ul fn" + " " + rev.getFirstNameR());
-				System.out.println("Review-ul n" + " " + rev.getName());
+				System.out.println("Review-ul n" + " " + rev.getLastNameR());
 				System.out.println("Review-ul em" + " " + rev.getrEmail());
 				System.out.println("Review-ul rc" + " " + rev.getReviewContent());
 				System.out.println("Review-ul g" + " " + rev.getGrade());
@@ -60,3 +60,4 @@ public class ReviewController {
 	}
 		
 }
+*/

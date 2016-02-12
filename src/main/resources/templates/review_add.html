@@ -39,7 +39,8 @@
 						class="icon-bar"></span>
 				</button>
 				<!-- <a class="navbar-brand" href="#">Start Bootstrap</a> -->
-				<a href="/"><img src="../images/meddex.png" height="50px" width="100px" /></a>
+				<a href="/"><img src="../images/meddex.png" height="50px"
+					width="100px" /></a>
 			</div>
 
 			<div class="collapse navbar-collapse"
@@ -85,10 +86,11 @@
 						</select> <br />
 						<h3>Stele</h3>
 						<input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						1 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						2 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						3 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						4 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
+						1 <br /> <input type="checkbox" name="vehicle"
+							value="checkNumber" />Stea 2 <br /> <input type="checkbox"
+							name="vehicle" value="checkNumber" />Stea 3 <br /> <input
+							type="checkbox" name="vehicle" value="checkNumber" />Stea 4 <br />
+						<input type="checkbox" name="vehicle" value="checkNumber" />Stea
 						5 <br />
 					</form>
 					<!--<a href="#" class="list-group-item active">Category 1</a>
@@ -103,17 +105,18 @@
 						<h3>PARERI</h3>
 						<br /> <a href="/"><button type="submit">Home</button></a>
 
-
-						<form action="/review_list" method="post">
+						<!-- <form th:action="@{/reviews?id={id}(id=${{doctor.id}})}" method="post"> -->
+							<form action="/reviews" method="post">
 							<div style="color: red;" th:text="${err}"></div>
 							First Name:<input name="firstNameR"
 								th:value="${review.firstNameR}" /><br /> Last Name:<input
-								name="name" th:value="${review.name}" /><br /> Email:<input
-								name="rEmail" th:value="${review.rEmail}" /><br />
+								name="lastNameR" th:value="${review.lastNameR}" /><br />
+							Email:<input name="rEmail" th:value="${review.rEmail}" /><br />
 							ReviewContent:<input name="reviewContent"
 								th:value="${review.reviewContent}" /><br /> Grade:<input
-								name="grade" th:value="${review.grade}" /><br /> <input
-								type="hidden" th:value="${doctor.id}" name="id" /> <input
+								name="grade" th:value="${review.grade}" /><br /> 
+							<!-- 	<input type="hidden" th:value="${doctor.id}" name="doctorID" />  -->
+								<input	type="hidden" th:value="${review.id}" name="reviewID" /> <input
 								type="submit" value="Save" />
 						</form>
 					</div>

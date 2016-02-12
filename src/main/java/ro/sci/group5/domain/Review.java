@@ -3,9 +3,7 @@ package ro.sci.group5.domain;
 public class Review extends AbstractModel{
 	private Doctor doctor;
 	private String firstNameR;	
-
-	private String name;
-	private String address;
+	private String lastNameR;
 	private String reviewContent;
 	private float grade;
 	private String rEmail;
@@ -28,23 +26,15 @@ public class Review extends AbstractModel{
 	}
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
-	}
-	
-	public String getName() {
-		//System.out.println("get name"+" "+name);
-		return name;
-	}
-	public void setName(String name) {
-		//System.out.println("set name"+" "+name);
-		this.name = name;
 	}		
 
-	public String getAddress() {
-		return address;
+	public String getLastNameR() {
+		return lastNameR;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setLastNameR(String lastNameR) {
+		this.lastNameR = lastNameR;
 	}
+
 	public String getReviewContent() {
 		return reviewContent;
 	}

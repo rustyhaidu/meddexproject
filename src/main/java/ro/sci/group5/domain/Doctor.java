@@ -30,10 +30,6 @@ public class Doctor extends AbstractModel {
 		this.showEmail = showEmail;
 	}
 
-	
-	
-	
-	
 	public boolean isShowPhoneNumber() {
 		return showPhoneNumber;
 	}

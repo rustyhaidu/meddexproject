@@ -30,7 +30,7 @@ public class HospitalController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView saveHospitals(Hospital hospital,BindingResult bindingResult) {
-		ModelAndView result = list();
+		ModelAndView result = null;
 	
 		try {
 			hospitalService.save(hospital);
@@ -39,6 +39,7 @@ public class HospitalController {
 			bindingResult.addError(new ObjectError("hospital",e.getMessage()));
 			
 		}
+		result = list();
 		return result;
 	}
 	
@@ -54,10 +55,11 @@ public class HospitalController {
 	}
 	@RequestMapping("/hospital_delete")
 	public ModelAndView onDelete(long id) {
-		ModelAndView result = list();
+		ModelAndView result = null;
 		if (!hospitalService.delete(id)) {					
 			result.addObject("error", "ERROR DELETING INEXISTENT HOSPITAL!");
 		}
+		result = list();
 		return result;
 	}
 	

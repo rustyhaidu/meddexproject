@@ -12,10 +12,9 @@
 <title>MEDDEX</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/bootstrap.min.css" rel="stylesheet" />
 <!-- Custom CSS -->
-<link href="/css/shop-item.css" rel="stylesheet" />
-
+<link href="css/shop-item.css" rel="stylesheet" />
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +45,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="/">Acasa</a></li>
+					<li><a href="#">Acasa</a></li>
 					<li><a href="/doctors">Medici</a></li>
 					<li><a href="/hospitals">Spitale</a></li>
 					<!--   <li>
@@ -54,7 +53,7 @@
 						</li> -->
 				</ul>
 				<p align="right">
-					<a href="#">Spitale</a>
+					<a href="#">Profilul Meu</a>
 				</p>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -101,50 +100,27 @@
 				<div class="thumbnail">
 					<!--  <img class="img-responsive" src="http://placehold.it/800x300" alt=""> -->
 					<div class="caption-full">
-						<h3>PROFILUL MEU</h3>
-						<br /> <a href="/hospitals/hospital_edit">Add Hospital</a> <a
-							href="/"><button type="submit">Home</button></a><br /> <a
-							href="/doctorToHospitalAdd"><button type="submit">Add
-								doctor to hospital</button></a>
-
+						<h3>PARERI DESPRE DOCTOR</h3>
+						<br /> <a
+							th:href="@{/doctors/review_add?id={id}(id=${{doctor.id}})}">Add
+							Review</a> <a href="/"><button type="submit">Home</button></a>
 						<table border="1">
 							<tr>
-								<td>Name</td>
-								<td>Street</td>
-								<td>Street number</td>
-								<td>Neighborhood</td>
-								<td>Phone number</td>
+								<td>FirstName</td>
+								<td>LastName</td>
 								<td>Email</td>
-								<td>Doctors</td>
+								<td>ReviewContent</td>
+								<td>Grade</td>
 							</tr>
-
-							<tr th:each="hospital : ${hospitals}">
-								<td th:text="${{hospital.hospitalName}}"></td>
-								<td th:text="${{hospital.streetName}}"></td>
-								<td th:text="${{hospital.streetNumber}}"></td>
-								<td th:text="${{hospital.neighbourhood}}"></td>
-								<td th:text="${{hospital.phoneNumber}}"></td>
-								<td th:text="${{hospital.hospitalEmail}}"></td>
-								
-								<td><a
-									th:href="@{/hospitals/hospital_edit?id={id}(id=${{hospital.id}})}">Edit
-										hospital's details</a> <a
-									th:href="@{/hospitals/hospital_delete?id={id}(id=${{hospital.id}})}">Delete
-										hospital</a> <a
-									th:href="@{/doctorsOfTheHospital/?id={id}(id=${{hospital.id}})}">View
-										Doctors</a></td>
+							<tr th:each="review : ${reviews}">
+								<td th:text="${{review.firstNameR}}"></td>
+								<td th:text="${{review.lastNameR}}"></td>
+								<td th:text="${{review.rEmail}}"></td>
+								<td th:text="${{review.reviewContent}}"></td>
+								<td th:text="${{review.grade}}"></td>
 							</tr>
-						</table>
-
-						<!--  <h4 class="pull-right">$24.99</h4>
-							<h4><a href="#">Product Name</a>
-							</h4>
-							<p>See more snippets like these online store reviews at <a target="_blank" href="http://bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-							<p>Want to make these reviews work? Check out
-								<strong><a href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this building a review system tutorial</a>
-								</strong>over at maxoffsky.com!</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-							-->
+						</table>						
+						
 					</div>
 					<div class="ratings">
 						<p class="pull-right">3 reviews</p>
@@ -214,8 +190,8 @@
 			</div>
 		</footer>
 	</div>
-	<script src="/js/jquery.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
 </body>
 

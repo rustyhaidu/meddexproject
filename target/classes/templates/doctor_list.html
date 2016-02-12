@@ -12,12 +12,10 @@
 <title>MEDDEX</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
 <!-- Custom CSS -->
-<link href="css/shop-item.css" rel="stylesheet" />
-<link href="../css/bootstrap.min.css" rel="stylesheet" />
-<!-- Custom CSS -->
-<link href="../css/shop-item.css" rel="stylesheet" />
+<link href="/css/shop-item.css" rel="stylesheet" />
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,7 +40,8 @@
 						class="icon-bar"></span>
 				</button>
 				<!-- <a class="navbar-brand" href="#">Start Bootstrap</a> -->
-				<a href="/"><img src="images/meddex.png" height="50px" width="100px" /></a>
+				<a href="/"><img src="images/meddex.png" height="50px"
+					width="100px" /></a>
 			</div>
 
 			<div class="collapse navbar-collapse"
@@ -88,10 +87,11 @@
 						</select> <br />
 						<h3>Stele</h3>
 						<input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						1 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						2 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						3 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						4 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
+						1 <br /> <input type="checkbox" name="vehicle"
+							value="checkNumber" />Stea 2 <br /> <input type="checkbox"
+							name="vehicle" value="checkNumber" />Stea 3 <br /> <input
+							type="checkbox" name="vehicle" value="checkNumber" />Stea 4 <br />
+						<input type="checkbox" name="vehicle" value="checkNumber" />Stea
 						5 <br />
 					</form>
 					<!--<a href="#" class="list-group-item active">Category 1</a>
@@ -104,10 +104,7 @@
 					<!--  <img class="img-responsive" src="http://placehold.it/800x300" alt=""> -->
 					<div class="caption-full">
 						<h3>LISTA DOCTORI</h3>
-						<br />
-						
-						
-						 <a href="/doctors/doctor_edit"><button type="submit">Add
+						<br /> <a href="/doctors/doctor_edit"><button type="submit">Add
 								Doctor</button></a> <a href="/"><button type="submit">Home</button></a>
 						<form action="/doctors/search" method="post">
 							<input type="text" name="query" placeholder="Search by name" />
@@ -143,7 +140,7 @@
 									th:href="@{/doctors/doctor_edit?id={id}(id=${{doctor.id}})}">Edit
 										Doctor</a> <a
 									th:href="@{/doctors/doctor_delete?id={id}(id=${{doctor.id}})}">Delete
-										Doctor</a> <a th:href="@{/review_list?id={id}(id=${{doctor.id}})}">Reviews
+										Doctor</a> <a th:href="@{/reviews?id={id}(id=${{doctor.id}})}">Reviews
 										of the Doctor</a></td>
 							</tr>
 						</table>
@@ -228,10 +225,9 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="../js/jquery.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
+	<script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
 
 </body>
 

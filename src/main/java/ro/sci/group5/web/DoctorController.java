@@ -28,8 +28,8 @@ public class DoctorController {
 	}
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView saveDoctor(Doctor doctor,BindingResult bindingResult) {
-		ModelAndView result = list();
-	
+		
+		ModelAndView result = null;
 		try {
 			doctorService.save(doctor);
 		} catch (Exception e) {			
@@ -37,6 +37,7 @@ public class DoctorController {
 			bindingResult.addError(new ObjectError("doctor",e.getMessage()));
 			
 		}
+		result = list();
 		return result;
 	}
 
@@ -59,7 +60,7 @@ public class DoctorController {
 		return result;
 	}
 
-	@RequestMapping("/review_add")
+	/*@RequestMapping("/review_add")
 	public ModelAndView renderAddReview(Long id, Review review) {
 		ModelAndView result = new ModelAndView("review_add");
 		Doctor doctor = new Doctor();
@@ -69,7 +70,7 @@ public class DoctorController {
 		result.addObject("doctor", doctor);
 		result.addObject("reviews", doctor.reviewList);
 		return result;
-	}
+	}*/
 
 	@RequestMapping("/doctor_delete")
 	public ModelAndView onDelete(long id) {
@@ -77,6 +78,7 @@ public class DoctorController {
 		if (!doctorService.delete(id)) {					
 			result.addObject("error", "ERROR DELETING INEXISTENT DOCTOR!");
 		}
-		return result;
+		ModelAndView result2 = list();
+		return result2;
 	}
 }

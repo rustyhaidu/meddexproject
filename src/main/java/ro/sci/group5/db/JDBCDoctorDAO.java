@@ -22,7 +22,7 @@ import ro.sci.group5.domain.Doctor;
 /**
  * Pure JDBC implementation for {@link DoctorDao}.
  * 
- * @author sebi
+ * @author Claudiu
  *
  */
 //@Repository

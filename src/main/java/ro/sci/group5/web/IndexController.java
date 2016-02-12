@@ -35,7 +35,7 @@ public class IndexController {
 		// hardcode of a review
 		Review review = new Review();
 		review.setFirstNameR("Reviewer first name");
-		review.setName("Reviewer last name");
+		review.setLastNameR("Reviewer last name");
 		review.setGrade(2);
 		review.setrEmail("Reviewer@yahoo.com");
 		review.setReviewContent("minunat");

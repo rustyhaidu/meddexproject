@@ -10,9 +10,11 @@ import ro.sci.group5.domain.Review;
 @Service
 public class ReviewService {
 	@Autowired
+	
 	private ReviewDAO reviewDao;
 
 	public Review save(Review review) {
+		System.out.println("Metoda save review"+" "+review.getId());
 		return reviewDao.update(review);
 	}
 

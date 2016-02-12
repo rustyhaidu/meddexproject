@@ -100,10 +100,12 @@
 				<div class="thumbnail">
 					<!--  <img class="img-responsive" src="http://placehold.it/800x300" alt=""> -->
 					<div class="caption-full">
+					
 						<h3>PARERI DESPRE DOCTOR</h3>
-						<br /> <a
-							th:href="@{/doctors/review_add?id={id}(id=${{doctor.id}})}">Add
-							Review</a> <a href="/"><button type="submit">Home</button></a>
+						<br /> 
+							<!-- <a th:href="@{/reviews/review_add?id={id}(id=${{doctor.id}})}"> -->
+							<a href="/reviews/review_add"><button type="submit">Add Review</button></a>
+							
 						<table border="1">
 							<tr>
 								<td>FirstName</td>
@@ -114,7 +116,7 @@
 							</tr>
 							<tr th:each="review : ${reviews}">
 								<td th:text="${{review.firstNameR}}"></td>
-								<td th:text="${{review.name}}"></td>
+								<td th:text="${{review.lastNameR}}"></td>
 								<td th:text="${{review.rEmail}}"></td>
 								<td th:text="${{review.reviewContent}}"></td>
 								<td th:text="${{review.grade}}"></td>
