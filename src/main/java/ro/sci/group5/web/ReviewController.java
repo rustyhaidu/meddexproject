@@ -1,4 +1,4 @@
-/*package ro.sci.group5.web;
+package ro.sci.group5.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,55 +9,69 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ro.sci.group5.domain.Doctor;
+import ro.sci.group5.domain.LinkDoctorReview;
 import ro.sci.group5.domain.Review;
 import ro.sci.group5.service.DoctorService;
+import ro.sci.group5.service.LinkService;
 import ro.sci.group5.service.ReviewService;
 
 @Controller
 @RequestMapping("/reviews")
 public class ReviewController {
-	@Autowired
+	@Autowired	
+	ReviewService reviewService;
+	@Autowired	
 	DoctorService doctorService;
-	ReviewService reviewService;	
+	@Autowired	
+	LinkService linkService;
 
 	@RequestMapping("")
-	public ModelAndView list(Long id) {
+	public ModelAndView list(Long doctorID) {
 		ModelAndView result = new ModelAndView("review_list");
 		Doctor doctor = new Doctor();
-		if (id != null) {
-			doctor = doctorService.findById(id);
+		if (doctorID != null) {
+			doctor = doctorService.findById(doctorID);
 		}
-		result.addObject("doctor", doctor);
-		result.addObject("reviews", doctor.reviewList);
-		return result;
-	}
-
-	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView saveReview(Long id, Review review, BindingResult bindingResult) {
-		ModelAndView result = list(id);
-		try {
-			Doctor doctor = new Doctor();
-			if (id != null) {
-				doctor = doctorService.findById(id);				
-			}
-			doctor.reviewList.add(review);
-
-			for (Review rev : doctor.reviewList) {
-				System.out.println("Review-ul fn" + " " + rev.getFirstNameR());
-				System.out.println("Review-ul n" + " " + rev.getLastNameR());
-				System.out.println("Review-ul em" + " " + rev.getrEmail());
-				System.out.println("Review-ul rc" + " " + rev.getReviewContent());
-				System.out.println("Review-ul g" + " " + rev.getGrade());
-			}
-			doctorService.save(doctor);
-
-		} catch (Exception e) {
-			// result = renderEditPage(doctor.getId());
-			bindingResult.addError(new ObjectError("doctor", e.getMessage()));
-
-		}
-		return result;
-	}
 		
+		result.addObject("doctor", doctor);
+		result.addObject("reviews", reviewService.findById(doctorID));
+		return result;
+	}
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView saveReview(Long doctorID,Review review,BindingResult bindingResult) {
+		Review rev = new Review();
+		ModelAndView result = null;
+		LinkDoctorReview link = new LinkDoctorReview();
+		try {
+			System.out.println("DOCTORID"+" "+doctorID);
+			rev =reviewService.save(review);
+			link.setDoctorID(doctorID);
+			link.setReviewID(rev.getId());
+			linkService.save(link);
+			System.out.println(rev.getId());
+		} catch (Exception e) {			
+			result = renderEditPage(doctorID,review.getId());	
+			bindingResult.addError(new ObjectError("doctor",e.getMessage()));
+			
+		}
+		result = list(doctorID);
+		return result;
+	}
+
+	@RequestMapping("/review_add")
+	public ModelAndView renderEditPage(Long doctorID, Long reviewID) {
+		ModelAndView result = new ModelAndView("review_add");
+		Review review= new Review();
+		if (reviewID != null) {
+			review = reviewService.findById(reviewID);			
+		}
+		Doctor doctor = new Doctor();
+		if (doctorID != null) {
+			doctor = doctorService.findById(doctorID);
+		}		
+		result.addObject("doctor", doctor);
+		result.addObject("review", review);
+		return result;
+	}
+	
 }
-*/

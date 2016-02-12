@@ -76,13 +76,13 @@ public class JDBCReviewDAO implements ReviewDAO {
 	}
 
 	@Override
-	public Review findById(Long id) {
+	public Review findById(Long doctorID) {
 		Connection connection = newConnection();
-
+		System.out.println(doctorID);
 		List<Review> result = new LinkedList<>();
 
 		try (ResultSet rs = connection.createStatement()
-				.executeQuery("select * from reviews where id = " + id)) {
+				.executeQuery("select r.* from reviews r join link_doctor_review lk on r.id = lk.id_review WHERE lk.id_doctor = " + doctorID)) {
 
 			while (rs.next()) {
 				result.add(extractReview(rs));
@@ -100,7 +100,7 @@ public class JDBCReviewDAO implements ReviewDAO {
 		}
 
 		if (result.size() > 1) {
-			throw new IllegalStateException("Multiple doctors for id: " + id);
+			throw new IllegalStateException("Multiple doctors for id: " + doctorID);
 		}
 		return result.isEmpty() ? null : result.get(0);
 	}
@@ -110,7 +110,7 @@ public class JDBCReviewDAO implements ReviewDAO {
 		try {
 			PreparedStatement ps = null;
 			
-			if (model.getId() == -12) {
+			if (model.getId() > 0) {
 				System.out.println("ID > 0"+" "+model.getId()+" "+model.getFirstNameR());
 				ps = connection.prepareStatement(
 						"update reviews set reviewer_first_name=?, reviewer_last_name=?, reviewer_email=?,review_content=?,review_grade=?"

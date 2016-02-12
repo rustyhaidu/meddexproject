@@ -29,25 +29,10 @@ public class IndexController {
 
 	@RequestMapping("")
 	public ModelAndView index() {
-		doctor.setFirstName("Claudiu");
-		doctor.setLastName("Haidu");
-		
-		// hardcode of a review
-		Review review = new Review();
-		review.setFirstNameR("Reviewer first name");
-		review.setLastNameR("Reviewer last name");
-		review.setGrade(2);
-		review.setrEmail("Reviewer@yahoo.com");
-		review.setReviewContent("minunat");
-		
-		doctor.reviewList.add(review);
-		
+		doctor.setFirstName("Meddex");
+		doctor.setLastName("User");
+	
 		doctorService.save(doctor);
-		
-		// hardcode of a hospital
-		Hospital hospital = new Hospital();
-		hospital.setHospitalName("Spital de Nebuni");
-		hospitalService.save(hospital);
 		
 		ModelAndView view = new ModelAndView("index");
 		//view.addObject("reviews", doctor.reviewList);		

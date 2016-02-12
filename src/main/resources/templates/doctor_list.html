@@ -40,7 +40,7 @@
 						class="icon-bar"></span>
 				</button>
 				<!-- <a class="navbar-brand" href="#">Start Bootstrap</a> -->
-				<a href="/"><img src="images/meddex.png" height="50px"
+				<a href="/"><img src="/images/meddex.png" height="50px"
 					width="100px" /></a>
 			</div>
 
@@ -55,7 +55,7 @@
 						</li> -->
 				</ul>
 				<p align="right">
-					<a href="#">Profilul Meu</a>
+					<a href="#">Profilul meu</a>
 				</p>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -66,7 +66,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
-				<p class="lead">Filtreaza Medici</p>
+				<p class="lead">Filtreaza Doctori</p>
 				<div class="list-group">
 					<form>
 						<select class="list-group-item active">
@@ -104,11 +104,11 @@
 					<!--  <img class="img-responsive" src="http://placehold.it/800x300" alt=""> -->
 					<div class="caption-full">
 						<h3>LISTA DOCTORI</h3>
-						<br /> <a href="/doctors/doctor_edit"><button type="submit">Add
-								Doctor</button></a> <a href="/"><button type="submit">Home</button></a>
+						<br /> <a href="/doctors/doctor_edit"><button type="submit">Adauga
+								Doctor</button></a> 
 						<form action="/doctors/search" method="post">
-							<input type="text" name="query" placeholder="Search by name" />
-							<button type="submit" class="btn btn-default">Search</button>
+							<input type="text" name="query" placeholder="Cauta dupa nume" />
+							<button type="submit" class="btn btn-default">Cauta</button>
 						</form>
 						<div style="color: red;" th:text="${err}"></div>
 						<table border="1">
@@ -117,13 +117,13 @@
 								<td>Nume</td>
 								<td>Prenume</td>
 								<td>Titlu</td>
-								<td>Nr.Tel</td>
+								<td>Nr. Tel</td>
 								<td>Email</td>
 								<td>Spec1</td>
 								<td>Spec2</td>
 								<td>Afisare Nr</td>
 								<td>AfisareEmail</td>
-								<td>Actions</td>
+								<td>Actiuni</td>
 							</tr>
 							<tr th:each="doctor : ${doctors}">
 								<td th:text="${{doctor.id}}"></td>
@@ -137,11 +137,11 @@
 								<td th:text="${{doctor.showPhoneNumber}}"></td>
 								<td th:text="${{doctor.showEmail}}"></td>
 								<td><a
-									th:href="@{/doctors/doctor_edit?id={id}(id=${{doctor.id}})}">Edit
+									th:href="@{/doctors/doctor_edit?id={id}(id=${{doctor.id}})}">Editeaza
 										Doctor</a> <a
-									th:href="@{/doctors/doctor_delete?id={id}(id=${{doctor.id}})}">Delete
-										Doctor</a> <a th:href="@{/reviews?id={id}(id=${{doctor.id}})}">Reviews
-										of the Doctor</a></td>
+									th:href="@{/doctors/doctor_delete?id={id}(id=${{doctor.id}})}">Sterge
+										Doctor</a> <a th:href="@{/reviews?doctorID={doctorID}(doctorID=${{doctor.id}})}">Pareri
+										despre Doctor</a></td>
 							</tr>
 						</table>
 
@@ -158,76 +158,76 @@
 							-->
 					</div>
 					<div class="ratings">
-						<p class="pull-right">3 reviews</p>
+						<p class="pull-right">3 pareri</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star-empty"></span> 4.0 stars
+								class="glyphicon glyphicon-star-empty"></span> 4.0 stele
 						</p>
 					</div>
 				</div>
 				<div class="well">
-					<!--  <div class="text-right">
+						<!--  <div class="text-right">
 							<a class="btn btn-success">Leave a Review</a>
 						</div> -->
-					<hr>
-					<div class="row">
-						<div class="col-md-12">
-							<span class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star-empty"></span> Anonymous <span
-								class="pull-right">10 days ago</span>
-							<p>This product was great in terms of quality. I would
-								definitely buy another!</p>
+						<hr>
+						<div class="row">
+							<div class="col-md-12">
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star-empty"></span>
+								Anonymous
+								<span class="pull-right">10 zile in urma</span>
+								<p>Un doctor excelent!</p>
+							</div>
 						</div>
-					</div>
-					</hr>
-					<div class="row">
-						<div class="col-md-12">
-							<span class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star-empty"></span> Anonymous <span
-								class="pull-right">12 days ago</span>
-							<p>I've alredy ordered another one!</p>
+						</hr>
+						<div class="row">
+							<div class="col-md-12">
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star-empty"></span>
+								Anonymous
+								<span class="pull-right">12 zile in urma</span>
+								<p>Cu siguranta voi reveni cand am probleme!</p>
+							</div>
 						</div>
-					</div>
-					<!--<hr> -->
-					<div class="row">
-						<div class="col-md-12">
-							<span class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star"></span> <span
-								class="glyphicon glyphicon-star-empty"></span> Anonymous <span
-								class="pull-right">15 days ago</span>
-							<p>I've seen some better than this, but not at this price. I
-								definitely recommend this item.</p>
+						<!--<hr> -->
+						<div class="row">
+							<div class="col-md-12">
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star-empty"></span>
+								Anonymous
+								<span class="pull-right">15 zile in urma</span>
+								<p>Multumita de servicii!</p>
+							</div>
 						</div>
-					</div>
+					</div> 
 				</div>
 			</div>
 		</div>
-	</div>
 
 
-	<div class="container">
-		<footer>
-			<div class="row">
-				<div class="col-lg-12">
-					<p>Copyright &copy; MEDDEX 2016</p>
+		<div class="container">		
+			<footer>
+				<div class="row">
+					<div class="col-lg-12">
+						<p>Copyright &copy; MEDDEX 2016</p>
+					</div>
 				</div>
-			</div>
-		</footer>
-	</div>
-	<script src="/js/jquery.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-
+			</footer>
+		</div>
+		<script src="js/jquery.js"></script>		
+		<script src="js/bootstrap.min.js"></script> 
 
 </body>
 

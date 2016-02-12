@@ -23,29 +23,29 @@ public class MeddexApplication {
 	
 	@Bean
 	public DoctorDao doctorDao() {
-		return new JDBCDoctorDAO("localhost", "5432", "test", "test", "test");
-				/*new JDBCDoctorDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com",
+		return //new JDBCDoctorDAO("localhost", "5432", "test", "test", "test");
+				new JDBCDoctorDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com",
 				"5432", "d74krrcumptmn8",
 				"krqitchudqnhbc", 
-				"2AC2l0pO26pUmP-6kQprCguYQr");*/					
+				"2AC2l0pO26pUmP-6kQprCguYQr");					
 				
 	}
 	@Bean
 	public ReviewDAO reviewDao() {
-		return new JDBCReviewDAO("localhost", "5432", "test", "test", "test");
-				/*new JDBCDoctorDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com",
+		return //new JDBCReviewDAO("localhost", "5432", "test", "test", "test");
+				new JDBCReviewDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com",
 				"5432", "d74krrcumptmn8",
 				"krqitchudqnhbc", 
-				"2AC2l0pO26pUmP-6kQprCguYQr");*/					
+				"2AC2l0pO26pUmP-6kQprCguYQr");				
 				
 	}
 	@Bean
 	public LinkDoctorReviewDao linkDao() {
-		return new JDBCLinkDAO("localhost", "5432", "test", "test", "test");
-				/*new JDBCDoctorDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com",
+		return //new JDBCLinkDAO("localhost", "5432", "test", "test", "test");
+				new JDBCLinkDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com",
 				"5432", "d74krrcumptmn8",
 				"krqitchudqnhbc", 
-				"2AC2l0pO26pUmP-6kQprCguYQr");*/					
+				"2AC2l0pO26pUmP-6kQprCguYQr");				
 				
 	}
 
