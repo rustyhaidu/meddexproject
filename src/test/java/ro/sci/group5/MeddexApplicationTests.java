@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = MeddexApplication.class)
 @WebAppConfiguration
-public class TeachAndLearnApplicationTests {
+public class MeddexApplicationTests {
 
 	@Test
 	public void contextLoads() {

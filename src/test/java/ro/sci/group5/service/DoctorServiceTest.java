@@ -8,67 +8,83 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import ro.sci.group5.MeddexApplication;
+import ro.sci.group5.ApplicationTests;
 import ro.sci.group5.domain.Doctor;
 import ro.sci.group5.service.DoctorService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = MeddexApplication.class)
+@SpringApplicationConfiguration(classes = ApplicationTests.class)
 public class DoctorServiceTest {
 
 	@Autowired
 	private DoctorService service;
-	
+
 	@After
-	public void tearDown(){
-		for (Doctor student:service.listAll()){
-			service.delete(student.getId());
+	public void tearDown() {
+		for (Doctor doctor : service.listAll()) {
+			service.delete(doctor.getId());
 		}
 	}
 
 	@Test
 	public void testSaveNewDoctor() {
-		Doctor student = new Doctor();
-		student.setFirstName("Gigi");
-		student.setLastName("Beeeeecali");
-		Doctor savedStudent = service.save(student);
-		Assert.assertTrue(savedStudent.getId() > 0);
-		Assert.assertEquals("Gigi", savedStudent.getFirstName());
-		Assert.assertEquals("Beeeeecali", savedStudent.getLastName());
+		Doctor doctor = new Doctor();
+		doctor.setFirstName("User1");
+		doctor.setLastName("User1Surname");
+		doctor.setHospital1("Spital1");
+		doctor.setHospital2("Spital2");
+		doctor.setPhoneNumber("077787799");
+		doctor.setDoctorEmail("doctor@doctor.com");
+		doctor.setShowEmail(true);
+		doctor.setShowPhoneNumber(true);
+		doctor.setTitleDoctor("Primar");
+		doctor.setSpecialization1("kinetoterapie");
+		doctor.setSpecialization2("chirurgie");
+
+		Doctor savedDoctor = service.save(doctor);
+		Assert.assertTrue(savedDoctor.getId() > 0);
+		Assert.assertEquals("User1", savedDoctor.getFirstName());
+		Assert.assertEquals("User1Surname", savedDoctor.getLastName());
 	}
 
 	@Test
 	public void testSaveExistingDoctor() {
-		Doctor student = new Doctor();
-		student.setFirstName("Gigi");
-		student.setLastName("Beeeeecali");
-		Doctor savedStudent = service.save(student);
-		Assert.assertTrue(savedStudent.getId() > 0);
-		Doctor savedStudent2 = service.save(student);
-		Assert.assertEquals(savedStudent, savedStudent2);
-	}
-	@Test
-	public void testDeleteStudent() {
 		Doctor doctor = new Doctor();
-		doctor.setFirstName("Gigi");
-		doctor.setLastName("Beeeeecali");
-		Doctor savedStudent = service.save(doctor);
-		Assert.assertTrue(service.delete(savedStudent.getId()));		
-		Assert.assertNull(service.findById(savedStudent.getId()));		
+		doctor.setFirstName("User1");
+		doctor.setLastName("User1Surname");
+		Doctor savedDoctor = service.save(doctor);
+		Assert.assertTrue(savedDoctor.getId() > 0);
+		Doctor savedDoctor2 = service.save(doctor);
+		Assert.assertEquals(savedDoctor, savedDoctor2);
 	}
+
 	@Test
-	public void testDoubleDeletionStudent() {
+	public void testDeleteDoctor() {
 		Doctor doctor = new Doctor();
-		doctor.setFirstName("Gigi");
-		doctor.setLastName("Beeeeecali");
-		Doctor doctorSaved = service.save(doctor); //save returns Doctor
-		Assert.assertTrue(service.delete(doctorSaved.getId())); //delete and findById return boolean
+		doctor.setFirstName("User1");
+		doctor.setLastName("User1Surname");
+		Doctor savedDoctor = service.save(doctor);
+		Assert.assertTrue(service.delete(savedDoctor.getId()));
+		Assert.assertNull(service.findById(savedDoctor.getId()));
+
+	}
+
+	@Test
+	public void testDoubleDeletionDoctor() {
+		Doctor doctor = new Doctor();
+		doctor.setFirstName("User1");
+		doctor.setLastName("User1Surname");
+		Doctor doctorSaved = service.save(doctor); // save returns Doctor
+		Assert.assertTrue(service.delete(doctorSaved.getId())); // delete always
+																// returns false
+																// in DB
 		Assert.assertFalse(service.delete(doctorSaved.getId()));
-		Assert.assertNull(service.findById(doctorSaved.getId()));		
+		Assert.assertNull(service.findById(doctorSaved.getId()));
 	}
+
 	@Test
-	public void testDeleteInexistingStudent() {		
-		Assert.assertFalse(service.delete(-1));				
+	public void testDeleteInexistingDoctor() {
+		Assert.assertFalse(service.delete(-1));
 	}
 
 }

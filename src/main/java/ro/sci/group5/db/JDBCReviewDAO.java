@@ -5,27 +5,19 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.Collection;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
-
 import ro.sci.group5.dao.ReviewDAO;
-import ro.sci.group5.domain.Doctor;
 import ro.sci.group5.domain.Review;
 
 /**
  * Pure JDBC implementation for {@link ReviewDao}.
- * 
- *
  */
-//@Repository
+
 public class JDBCReviewDAO implements ReviewDAO {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JDBCDoctorDAO.class);
 
@@ -35,11 +27,22 @@ public class JDBCReviewDAO implements ReviewDAO {
 	private String userName;
 	private String pass;
 
-	
+	/**
+	 * Constructor
+	 */
 	public JDBCReviewDAO() {
 		super();
 	}
 
+	/**
+	 * Construct with connection input
+	 * 
+	 * @param host
+	 * @param port
+	 * @param dbName
+	 * @param userName
+	 * @param pass
+	 */
 	public JDBCReviewDAO(String host, String port, String dbName, String userName, String pass) {
 		this.host = host;
 		this.userName = userName;
@@ -48,14 +51,16 @@ public class JDBCReviewDAO implements ReviewDAO {
 		this.dbName = dbName;
 	}
 
+	/**
+	 * This method returns all the reviews from reviews table in DB.
+	 */
 	@Override
 	public Collection<Review> getAll() {
 		Connection connection = newConnection();
 
 		Collection<Review> result = new LinkedList<>();
 
-		try (ResultSet rs = connection.createStatement()
-				.executeQuery("select * from reviews")) {
+		try (ResultSet rs = connection.createStatement().executeQuery("select * from reviews")) {
 
 			while (rs.next()) {
 				result.add(extractReview(rs));
@@ -75,14 +80,21 @@ public class JDBCReviewDAO implements ReviewDAO {
 		return result;
 	}
 
+	/**
+	 * This method returns the review from reviews table in DB, based on id.
+	 * 
+	 * @param id
+	 * @return Review
+	 */
 	@Override
 	public Review findById(Long doctorID) {
 		Connection connection = newConnection();
 		System.out.println(doctorID);
 		List<Review> result = new LinkedList<>();
 
-		try (ResultSet rs = connection.createStatement()
-				.executeQuery("select r.* from reviews r join link_doctor_review lk on r.id = lk.id_review WHERE lk.id_doctor = " + doctorID)) {
+		try (ResultSet rs = connection.createStatement().executeQuery(
+				"select r.* from reviews r join link_doctor_review lk on r.id = lk.id_review WHERE lk.id_doctor = "
+						+ doctorID)) {
 
 			while (rs.next()) {
 				result.add(extractReview(rs));
@@ -104,35 +116,38 @@ public class JDBCReviewDAO implements ReviewDAO {
 		}
 		return result.isEmpty() ? null : result.get(0);
 	}
+
+	/**
+	 * This method inserts/updates reviews in reviews table.
+	 * 
+	 * @param model
+	 * @return Reviews from DB
+	 */
 	@Override
 	public Review update(Review model) {
 		Connection connection = newConnection();
 		try {
 			PreparedStatement ps = null;
-			
+
 			if (model.getId() > 0) {
-				System.out.println("ID > 0"+" "+model.getId()+" "+model.getFirstNameR());
 				ps = connection.prepareStatement(
 						"update reviews set reviewer_first_name=?, reviewer_last_name=?, reviewer_email=?,review_content=?,review_grade=?"
 								+ "where id = ? returning id");
-				
-				
 
 			} else {
 
 				ps = connection.prepareStatement(
 						"insert into reviews (reviewer_first_name, reviewer_last_name, reviewer_email,review_content,review_grade) "
 								+ "values (?, ?, ?, ?, ?) returning id");
-					System.out.println("sunt aici");
 			}
 			ps.setString(1, model.getFirstNameR());
-			ps.setString(2, model.getLastNameR());		
+			ps.setString(2, model.getLastNameR());
 			ps.setString(3, model.getrEmail());
 			ps.setString(4, model.getReviewContent());
 			ps.setFloat(5, model.getGrade());
 
 			System.out.println(model.getFirstNameR());
-			
+
 			if (model.getId() > 0) {
 				ps.setLong(6, model.getId());
 			}
@@ -159,22 +174,17 @@ public class JDBCReviewDAO implements ReviewDAO {
 		return model;
 	}
 
+	/**
+	 * Connection to postgresql database
+	 * 
+	 * @return
+	 */
 	protected Connection newConnection() {
 		try {
 			Class.forName("org.postgresql.Driver").newInstance();
 
-			String url = new StringBuilder()
-					.append("jdbc:")
-					.append("postgresql")
-					.append("://")
-					.append(host)
-					.append(":")
-					.append(port)
-					.append("/")
-					.append(dbName)
-					.append("?user=")
-					.append(userName)
-					.append("&password=")
+			String url = new StringBuilder().append("jdbc:").append("postgresql").append("://").append(host).append(":")
+					.append(port).append("/").append(dbName).append("?user=").append(userName).append("&password=")
 					.append(pass).toString();
 			Connection result = DriverManager.getConnection(url);
 			result.setAutoCommit(false);
@@ -197,18 +207,22 @@ public class JDBCReviewDAO implements ReviewDAO {
 		return review;
 	}
 
+	/**
+	 * Not used.
+	 */
 	@Override
 	public boolean delete(Review model) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * Not used.
+	 */
 	@Override
 	public Collection<Review> searchByName(String query) {
 		// TODO Auto-generated method stub
 		return null;
-	}	
-	
+	}
 
 }
-

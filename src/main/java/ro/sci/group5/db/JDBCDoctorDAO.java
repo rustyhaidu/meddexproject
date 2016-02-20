@@ -6,26 +6,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.Collection;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
-
 import ro.sci.group5.dao.DoctorDao;
 import ro.sci.group5.domain.Doctor;
 
 /**
  * Pure JDBC implementation for {@link DoctorDao}.
- * 
- * @author Claudiu
  *
  */
-//@Repository
 public class JDBCDoctorDAO implements DoctorDao {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JDBCDoctorDAO.class);
 
@@ -35,11 +27,22 @@ public class JDBCDoctorDAO implements DoctorDao {
 	private String userName;
 	private String pass;
 
-	
+	/**
+	 * Constructor
+	 */
 	public JDBCDoctorDAO() {
 		super();
 	}
 
+	/**
+	 * Construct with connection input
+	 * 
+	 * @param host
+	 * @param port
+	 * @param dbName
+	 * @param userName
+	 * @param pass
+	 */
 	public JDBCDoctorDAO(String host, String port, String dbName, String userName, String pass) {
 		this.host = host;
 		this.userName = userName;
@@ -48,14 +51,16 @@ public class JDBCDoctorDAO implements DoctorDao {
 		this.dbName = dbName;
 	}
 
+	/**
+	 * This method returns all the doctors from doctors table in DB.
+	 */
 	@Override
 	public Collection<Doctor> getAll() {
 		Connection connection = newConnection();
 
 		Collection<Doctor> result = new LinkedList<>();
 
-		try (ResultSet rs = connection.createStatement()
-				.executeQuery("select * from doctors")) {
+		try (ResultSet rs = connection.createStatement().executeQuery("select * from doctors")) {
 
 			while (rs.next()) {
 				result.add(extractDoctor(rs));
@@ -75,14 +80,19 @@ public class JDBCDoctorDAO implements DoctorDao {
 		return result;
 	}
 
+	/**
+	 * This method returns the doctor from doctors table in DB, based on id.
+	 * 
+	 * @param id
+	 * @return Doctor
+	 */
 	@Override
 	public Doctor findById(Long id) {
 		Connection connection = newConnection();
 
 		List<Doctor> result = new LinkedList<>();
 
-		try (ResultSet rs = connection.createStatement()
-				.executeQuery("select * from doctors where id = " + id)) {
+		try (ResultSet rs = connection.createStatement().executeQuery("select * from doctors where id = " + id)) {
 
 			while (rs.next()) {
 				result.add(extractDoctor(rs));
@@ -105,6 +115,12 @@ public class JDBCDoctorDAO implements DoctorDao {
 		return result.isEmpty() ? null : result.get(0);
 	}
 
+	/**
+	 * This method inserts/updates doctors in doctors table.
+	 * 
+	 * @param model
+	 * @return Doctor from DB
+	 */
 	@Override
 	public Doctor update(Doctor model) {
 		Connection connection = newConnection();
@@ -113,10 +129,8 @@ public class JDBCDoctorDAO implements DoctorDao {
 			if (model.getId() > 0) {
 				ps = connection.prepareStatement(
 						"update doctors set first_name=?, last_name=?,  hospital1=?, hospital2=?, title_doctor=?,  phone_number=?,"
-						+ "doctor_email=?,show_phone_number=?,show_email=?,specialization1=?,specialization2=?"
+								+ "doctor_email=?,show_phone_number=?,show_email=?,specialization1=?,specialization2=?"
 								+ "where id = ? returning id");
-				
-				
 
 			} else {
 
@@ -131,10 +145,10 @@ public class JDBCDoctorDAO implements DoctorDao {
 			ps.setString(4, model.getHospital2());
 			ps.setString(5, model.getTitleDoctor());
 			ps.setString(6, model.getPhoneNumber());
-			ps.setString(7,  model.getDoctorEmail());
+			ps.setString(7, model.getDoctorEmail());
 			ps.setBoolean(8, model.isShowPhoneNumber());
 			ps.setBoolean(9, model.isShowEmail());
-			ps.setString(10,  model.getSpecialization1());
+			ps.setString(10, model.getSpecialization1());
 			ps.setString(11, model.getSpecialization2());
 
 			if (model.getId() > 0) {
@@ -163,6 +177,12 @@ public class JDBCDoctorDAO implements DoctorDao {
 		return model;
 	}
 
+	/**
+	 * This method deletes doctor from doctors table.
+	 * 
+	 * @param model
+	 * @return boolean
+	 */
 	@Override
 	public boolean delete(Doctor model) {
 		boolean result = false;
@@ -185,6 +205,12 @@ public class JDBCDoctorDAO implements DoctorDao {
 
 	}
 
+	/**
+	 * This method returns doctors from DB, by FirstName or LastName.
+	 * 
+	 * @param query
+	 * @return collection of Doctors
+	 */
 	@Override
 	public Collection<Doctor> searchByName(String query) {
 		if (query == null) {
@@ -213,22 +239,17 @@ public class JDBCDoctorDAO implements DoctorDao {
 		return result;
 	}
 
+	/**
+	 * Connection to postgresql database
+	 * 
+	 * @return
+	 */
 	protected Connection newConnection() {
 		try {
 			Class.forName("org.postgresql.Driver").newInstance();
 
-			String url = new StringBuilder()
-					.append("jdbc:")
-					.append("postgresql")
-					.append("://")
-					.append(host)
-					.append(":")
-					.append(port)
-					.append("/")
-					.append(dbName)
-					.append("?user=")
-					.append(userName)
-					.append("&password=")
+			String url = new StringBuilder().append("jdbc:").append("postgresql").append("://").append(host).append(":")
+					.append(port).append("/").append(dbName).append("?user=").append(userName).append("&password=")
 					.append(pass).toString();
 			Connection result = DriverManager.getConnection(url);
 			result.setAutoCommit(false);
@@ -254,9 +275,8 @@ public class JDBCDoctorDAO implements DoctorDao {
 		doctor.setShowEmail(rs.getBoolean("show_email"));
 		doctor.setSpecialization1(rs.getString("specialization1"));
 		doctor.setSpecialization1(rs.getString("specialization2"));
-		
+
 		return doctor;
-	}	
-	
+	}
 
 }
