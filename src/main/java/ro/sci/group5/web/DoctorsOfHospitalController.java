@@ -46,9 +46,9 @@ public class DoctorsOfHospitalController {
 		}
 		//System.out.println("Am id-ul"+ " "+hospitalID);
 		
-		//view.addObject("hospital", hospital);
+		view.addObject("hospital", hospital);
 		view.addObject("hospitalDoctors", doctorService.findByHospitalId(hospitalID));
-		System.out.println(doctorService.findByHospitalId(hospitalID).size());
+		//System.out.println(doctorService.findByHospitalId(hospitalID).size());
 		return view;
 	}
 
@@ -60,8 +60,8 @@ public class DoctorsOfHospitalController {
 	 * @return ModelAndView
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView saveDoctor(Long doctorID, Long hospitalID) {
-		ModelAndView result = list(hospitalID);
+	public ModelAndView saveDoctor(Long doctorID, Long hospitalID) {		
+		ModelAndView result = null;
 		try {
 			System.out.println(hospitalID);
 			System.out.println(doctorID);
@@ -76,6 +76,7 @@ public class DoctorsOfHospitalController {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		result = list(hospitalID);
 		return result;
 	}
 
