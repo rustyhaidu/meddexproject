@@ -111,9 +111,9 @@ public class JDBCReviewDAO implements ReviewDAO {
 			}
 		}
 
-		if (result.size() > 1) {
+		/*if (result.size() > 1) {
 			throw new IllegalStateException("Multiple doctors for id: " + doctorID);
-		}
+		}*/
 		return result.isEmpty() ? null : result.get(0);
 	}
 
@@ -223,6 +223,38 @@ public class JDBCReviewDAO implements ReviewDAO {
 	public Collection<Review> searchByName(String query) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Collection<Review> findByDoctorID(Long doctorID) {
+		Connection connection = newConnection();
+		System.out.println(doctorID);
+		List<Review> result = new LinkedList<>();
+
+		try (ResultSet rs = connection.createStatement().executeQuery(
+				"select r.* from reviews r join link_doctor_review lk on r.id = lk.id_review WHERE lk.id_doctor = "
+				
+						+ doctorID)) {
+
+			while (rs.next()) {
+				result.add(extractReview(rs));
+			}
+			connection.commit();
+		} catch (SQLException ex) {
+
+			throw new RuntimeException("Error getting doctors.", ex);
+		} finally {
+			try {
+				connection.close();
+			} catch (Exception ex) {
+
+			}
+		}
+
+		/*if (result.size() > 1) {
+			throw new IllegalStateException("Multiple doctors for id: " + doctorID);
+		}*/
+		return result;
 	}
 
 }

@@ -45,9 +45,12 @@ public class HospitalController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView saveHospitals(Hospital hospital, BindingResult bindingResult) {
 		ModelAndView result = null;
-
+		Hospital test = new Hospital();
 		try {
-			hospitalService.save(hospital);
+			System.out.println("Hospitals");
+			System.out.println(hospital.getHospitalName());
+		test =	hospitalService.save(hospital);
+			System.out.println("ID spital"+" "+test.getId());
 		} catch (Exception e) {
 			result = renderEditPage(hospital.getId());
 			bindingResult.addError(new ObjectError("hospital", e.getMessage()));

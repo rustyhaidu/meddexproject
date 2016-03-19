@@ -70,6 +70,10 @@ public class DoctorService {
 		Doctor doctor = dao.findById(id);
 		return doctor;
 	}
+	public Collection<Doctor> findByHospitalId(long id) {
+		Collection<Doctor> doctorList = dao.findByHospitalID(id);
+		return doctorList;
+	}
 
 	/**
 	 * Method for finding doctors by its First Name and/or Last Name

@@ -44,6 +44,7 @@ public class ReviewController {
 		}
 
 		result.addObject("doctor", doctor);
+		//result.addObject("reviews", reviewService.findByDoctorID(doctorID));
 		result.addObject("reviews", reviewService.findById(doctorID));
 		return result;
 	}

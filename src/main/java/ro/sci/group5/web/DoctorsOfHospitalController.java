@@ -8,9 +8,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ro.sci.group5.domain.Doctor;
 import ro.sci.group5.domain.Hospital;
-
+import ro.sci.group5.domain.LinkDoctorHospital;
+import ro.sci.group5.domain.LinkDoctorReview;
 import ro.sci.group5.service.DoctorService;
 import ro.sci.group5.service.HospitalService;
+import ro.sci.group5.service.LinkDHService;
 
 /**
  * This class is used for rendering the doctorsOfTheHospital page
@@ -24,6 +26,8 @@ public class DoctorsOfHospitalController {
 	HospitalService hospitalService;
 	@Autowired
 	DoctorService doctorService;
+	@Autowired
+	LinkDHService linkDHService;
 
 	/**
 	 * Method used for creating a view with all the available doctors of a
@@ -33,16 +37,18 @@ public class DoctorsOfHospitalController {
 	 * @return ModelAndView
 	 */
 	@RequestMapping("")
-	public ModelAndView list(Long id) {
+	public ModelAndView list(Long hospitalID) {
 		ModelAndView view = new ModelAndView("doctorsOfTheHospital");
 
 		Hospital hospital = new Hospital();
-		if (id != null) {
-			hospital = hospitalService.findById(id);
+		if (hospitalID != null) {
+			hospital = hospitalService.findById(hospitalID);
 		}
-
-		view.addObject("hospital", hospital);
-		view.addObject("hospitalDoctors", hospital.listOfDoctors);
+		//System.out.println("Am id-ul"+ " "+hospitalID);
+		
+		//view.addObject("hospital", hospital);
+		view.addObject("hospitalDoctors", doctorService.findByHospitalId(hospitalID));
+		System.out.println(doctorService.findByHospitalId(hospitalID).size());
 		return view;
 	}
 
@@ -59,19 +65,13 @@ public class DoctorsOfHospitalController {
 		try {
 			System.out.println(hospitalID);
 			System.out.println(doctorID);
-			Hospital hospital = new Hospital();
-
-			Doctor doctor = new Doctor();
-			if (hospitalID != null) {
-				hospital = hospitalService.findById(hospitalID);
-			}
-			if (doctorID != null) {
-				doctor = doctorService.findById(doctorID);
-			}
-
-			hospital.listOfDoctors.add(doctor);
-
-			hospitalService.save(hospital);
+			
+			LinkDoctorHospital link = new LinkDoctorHospital();		
+			
+			
+			link.setDoctorID(doctorID);
+			link.setHospitalID(hospitalID);
+			linkDHService.save(link);
 
 		} catch (Exception e) {
 			System.out.println(e);

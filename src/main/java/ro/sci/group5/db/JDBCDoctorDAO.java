@@ -160,7 +160,6 @@ public class JDBCDoctorDAO implements DoctorDao {
 				model.setId(rs.getLong(1));
 			}
 			rs.close();
-
 			connection.commit();
 
 		} catch (SQLException ex) {
@@ -278,5 +277,31 @@ public class JDBCDoctorDAO implements DoctorDao {
 
 		return doctor;
 	}
+	
+	@Override
+	public Collection<Doctor> findByHospitalID(Long hospitalID) {
+		Connection connection = newConnection();
 
+		Collection<Doctor> result = new LinkedList<>();
+
+		try (ResultSet rs = connection.createStatement().executeQuery(
+				"select d.* from doctors d join link_doctor_hospital lh on d.id = lh.id_doctor WHERE lh.id_hospital =  "
+						+ hospitalID)) {
+
+			while (rs.next()) {
+				result.add(extractDoctor(rs));
+			}
+			connection.commit();
+		} catch (SQLException ex) {
+
+			throw new RuntimeException("Error getting doctors for hospital.", ex);
+		} finally {
+			try {
+				connection.close();
+			} catch (Exception ex) {
+
+			}
+		}
+		return result;
+	}
 }

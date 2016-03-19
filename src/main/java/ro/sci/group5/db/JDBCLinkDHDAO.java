@@ -12,7 +12,10 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ro.sci.group5.dao.LinkDoctorHospitalDao;
 import ro.sci.group5.dao.LinkDoctorReviewDao;
+import ro.sci.group5.domain.Doctor;
+import ro.sci.group5.domain.LinkDoctorHospital;
 import ro.sci.group5.domain.LinkDoctorReview;
 
 /**
@@ -20,7 +23,7 @@ import ro.sci.group5.domain.LinkDoctorReview;
  * 
  *
  */
-public class JDBCLinkDAO implements LinkDoctorReviewDao {
+public class JDBCLinkDHDAO implements LinkDoctorHospitalDao {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JDBCDoctorDAO.class);
 
 	private String host;
@@ -32,7 +35,7 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 	/**
 	 * Constructor
 	 */
-	public JDBCLinkDAO() {
+	public JDBCLinkDHDAO() {
 		super();
 	}
 
@@ -45,7 +48,7 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 	 * @param userName
 	 * @param pass
 	 */
-	public JDBCLinkDAO(String host, String port, String dbName, String userName, String pass) {
+	public JDBCLinkDHDAO(String host, String port, String dbName, String userName, String pass) {
 		this.host = host;
 		this.userName = userName;
 		this.pass = pass;
@@ -58,15 +61,15 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 	 * table in DB.
 	 */
 	@Override
-	public Collection<LinkDoctorReview> getAll() {
+	public Collection<LinkDoctorHospital> getAll() {
 		Connection connection = newConnection();
 
-		Collection<LinkDoctorReview> result = new LinkedList<>();
+		Collection<LinkDoctorHospital> result = new LinkedList<>();
 
-		try (ResultSet rs = connection.createStatement().executeQuery("select * from link_doctor_review")) {
+		try (ResultSet rs = connection.createStatement().executeQuery("select * from link_doctor_hospital")) {
 
 			while (rs.next()) {
-				result.add(extractReview(rs));
+				//result.add(extractDoctor(rs));
 			}
 			connection.commit();
 		} catch (SQLException ex) {
@@ -88,24 +91,25 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 	 * on id.
 	 * 
 	 * @param id
-	 * @return LinkDoctorReview
+	 * @return 
 	 */
 	@Override
-	public LinkDoctorReview findById(Long id) {
+	public LinkDoctorHospital findById(Long doctorID) {
 		Connection connection = newConnection();
 
-		List<LinkDoctorReview> result = new LinkedList<>();
+		List<LinkDoctorHospital> result = new LinkedList<>();
 
 		try (ResultSet rs = connection.createStatement()
-				.executeQuery("select * from link_doctor_review where id = " + id)) {
+				.executeQuery("select r.* from doctors r join link_doctor_hospital lh on r.id = lh.id_doctor WHERE lh.id_hospital =  "
+						+ doctorID)) {
 
 			while (rs.next()) {
-				result.add(extractReview(rs));
+				//result.add(extractDoctor(rs));
 			}
 			connection.commit();
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting reviews.", ex);
+			throw new RuntimeException("Error getting doctors for hospital.", ex);
 		} finally {
 			try {
 				connection.close();
@@ -115,11 +119,12 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 		}
 
 		if (result.size() > 1) {
-			throw new IllegalStateException("Multiple doctors for id: " + id);
+			throw new IllegalStateException("Multiple doctors hospital for id: " + doctorID);
 		}
 		return result.isEmpty() ? null : result.get(0);
 	}
-
+	
+	
 	/**
 	 * This method inserts/updates links in link_doctor_review table.
 	 * 
@@ -127,7 +132,7 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 	 * @return LinkDoctorReview from DB
 	 */
 	@Override
-	public LinkDoctorReview update(LinkDoctorReview model) {
+	public LinkDoctorHospital update(LinkDoctorHospital model) {
 		Connection connection = newConnection();
 		try {
 			PreparedStatement ps = null;
@@ -135,16 +140,15 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 				ps = connection.prepareStatement(
 						"update link_doctor_review set id_doctor=?, id_review=?" + "where id = ? returning id");
 
-				System.out.println("!?!?");
-
+				
 			} else {
 
 				ps = connection.prepareStatement(
-						"insert into link_doctor_review (id_doctor,id_review) " + "values (?, ?) returning id");
+						"insert into link_doctor_hospital (id_doctor,id_hospital) " + "values (?, ?) returning id");
 				
 			}
 			ps.setLong(1, model.getDoctorID());
-			ps.setLong(2, model.getReviewID());
+			ps.setLong(2, model.getHospitalID());
 
 			if (model.getId() > 0) {
 				ps.setLong(3, model.getId());
@@ -159,8 +163,9 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 			connection.commit();
 
 		} catch (SQLException ex) {
-
-			throw new RuntimeException("Error getting doctors.", ex);
+			System.out.println(ex);
+			throw new RuntimeException("Error getting links for INSERT doctors hospitals.", ex);
+			
 		} finally {
 			try {
 				connection.close();
@@ -195,19 +200,29 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 
 	}
 
-	private LinkDoctorReview extractReview(ResultSet rs) throws SQLException {
-		LinkDoctorReview link = new LinkDoctorReview();
-		link.setId(rs.getLong("id_doctor"));
-		link.setId(rs.getLong("id_review"));
+	private Doctor extractDoctor(ResultSet rs) throws SQLException {
+		Doctor doctor = new Doctor();
+		doctor.setId(rs.getLong("id"));
+		doctor.setFirstName(rs.getString("first_name"));
+		doctor.setLastName(rs.getString("last_name"));
+		doctor.setHospital1(rs.getString("hospital1"));
+		doctor.setHospital2(rs.getString("hospital2"));
+		doctor.setTitleDoctor(rs.getString("title_doctor"));
+		doctor.setPhoneNumber(rs.getString("phone_number"));
+		doctor.setDoctorEmail(rs.getString("doctor_email"));
+		doctor.setShowPhoneNumber(rs.getBoolean("show_phone_number"));
+		doctor.setShowEmail(rs.getBoolean("show_email"));
+		doctor.setSpecialization1(rs.getString("specialization1"));
+		doctor.setSpecialization1(rs.getString("specialization2"));
 
-		return link;
+		return doctor;
 	}
 
 	/**
 	 * Not used.
 	 */
 	@Override
-	public boolean delete(LinkDoctorReview model) {
+	public boolean delete(LinkDoctorHospital model) {
 		// TODO Auto-generated method stub
 		return false;
 	}

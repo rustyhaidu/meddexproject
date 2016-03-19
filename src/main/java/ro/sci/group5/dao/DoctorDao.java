@@ -16,4 +16,5 @@ public interface DoctorDao extends BaseDAO<Doctor> {
 	 * @return all Doctors that contain string "query"
 	 */
 	Collection<Doctor> searchByName(String query);
+	Collection<Doctor> findByHospitalID(Long hospitalID);
 }

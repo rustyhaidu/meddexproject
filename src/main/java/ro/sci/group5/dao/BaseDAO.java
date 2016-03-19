@@ -3,6 +3,7 @@ package ro.sci.group5.dao;
 import java.util.Collection;
 
 import ro.sci.group5.domain.AbstractModel;
+import ro.sci.group5.domain.Doctor;
 /**
  * Generic class for DAO operations
  *
@@ -31,4 +32,6 @@ public interface BaseDAO<T extends AbstractModel> {
 	 * @return boolean
 	 */
 	boolean delete(T model);
+	
+	
 }

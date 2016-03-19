@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.sci.group5.dao.ReviewDAO;
+import ro.sci.group5.domain.Doctor;
 import ro.sci.group5.domain.Review;
 
 /**
@@ -63,5 +64,8 @@ public class ReviewService {
 		} else {
 			return reviewDao.delete(review);
 		}
+	}
+	public Collection<Review> findByDoctorID(Long doctorID) {
+		return reviewDao.findByDoctorID(doctorID);
 	}
 }

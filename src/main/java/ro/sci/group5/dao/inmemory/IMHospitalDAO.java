@@ -14,7 +14,7 @@ import ro.sci.group5.domain.Hospital;
  * This is the class used for storing In Memory information of Hospital type
  * objects.
  */
-@Repository
+//@Repository
 public class IMHospitalDAO extends IMBaseDAO<Hospital> implements HospitalDao {
 	/**
 	 * This method implements the search of Hospital using as input a string

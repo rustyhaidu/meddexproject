@@ -40,4 +40,11 @@ public class IMDoctorDAO extends IMBaseDAO<Doctor> implements DoctorDao {
 		return all;
 	}
 
+
+	@Override
+	public Collection<Doctor> findByHospitalID(Long hospitalID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

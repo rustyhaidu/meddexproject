@@ -1,0 +1,16 @@
+<form action="/doctors" method="post">
+							<div style="color: red;" th:text="${err}"></div>
+							Prenume:<input name="firstName" th:value="${doctor.firstName}" /> <br/>
+							Nume:<input name="lastName" th:value="${doctor.lastName}" /><br />
+							Titlu Doctor:<input name="titleDoctor"
+								th:value="${doctor.titleDoctor}" /><br /> Numar Telefon:<input
+								name="phoneNumber" th:value="${doctor.phoneNumber}" /><br />
+							Email:<input name="doctorEmail"
+								th:value="${doctor.doctorEmail}" /><br /> Prima
+							Specializare:<input name="specialization1"
+								th:value="${doctor.specialization1}" /><br /> A Doua
+							Specializare:<input name="specialization2"
+								th:value="${doctor.specialization2}" /><br /> <input
+								type="hidden" th:value="${doctor.id}" name="id" /> <input
+								type="submit" value="Salveaza Doctor" />
+						</form>

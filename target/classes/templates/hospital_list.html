@@ -40,7 +40,8 @@
 						class="icon-bar"></span>
 				</button>
 				<!-- <a class="navbar-brand" href="#">Start Bootstrap</a> -->
-				<a href="/"><img src="images/meddex.png" height="50px" width="100px" /></a>
+				<a href="/"><img src="images/meddex.png" height="50px"
+					width="100px" /></a>
 			</div>
 
 			<div class="collapse navbar-collapse"
@@ -86,10 +87,11 @@
 						</select> <br />
 						<h3>Stele</h3>
 						<input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						1 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						2 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						3 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
-						4 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
+						1 <br /> <input type="checkbox" name="vehicle"
+							value="checkNumber" />Stea 2 <br /> <input type="checkbox"
+							name="vehicle" value="checkNumber" />Stea 3 <br /> <input
+							type="checkbox" name="vehicle" value="checkNumber" />Stea 4 <br />
+						<input type="checkbox" name="vehicle" value="checkNumber" />Stea
 						5 <br />
 					</form>
 					<!--<a href="#" class="list-group-item active">Category 1</a>
@@ -102,7 +104,8 @@
 					<!--  <img class="img-responsive" src="http://placehold.it/800x300" alt=""> -->
 					<div class="caption-full">
 						<h3>SPITALE</h3>
-						<br /> <a href="/hospitals/hospital_edit">Adauga Spital</a><br /> <a
+						<br /> <a href="/hospitals/hospital_edit">Adauga Spital</a><br />
+						 <a
 							href="/doctorToHospitalAdd"><button type="submit">Adauga
 								Doctor la Spital</button></a>
 
@@ -124,14 +127,15 @@
 								<td th:text="${{hospital.neighbourhood}}"></td>
 								<td th:text="${{hospital.phoneNumber}}"></td>
 								<td th:text="${{hospital.hospitalEmail}}"></td>
-								
+
 								<td><a
 									th:href="@{/hospitals/hospital_edit?id={id}(id=${{hospital.id}})}">Editeaza
 										Spital</a> <a
 									th:href="@{/hospitals/hospital_delete?id={id}(id=${{hospital.id}})}">Sterge
 										Spital</a> <a
-									th:href="@{/doctorsOfTheHospital/?id={id}(id=${{hospital.id}})}">Lista
+									th:href="@{/doctorsOfTheHospital/?hospitalID={hospitalID}(hospitalID=${{hospital.id}})}">Lista
 										Doctori</a></td>
+										
 							</tr>
 						</table>
 
@@ -157,65 +161,62 @@
 					</div>
 				</div>
 				<div class="well">
-						<!--  <div class="text-right">
+					<!--  <div class="text-right">
 							<a class="btn btn-success">Leave a Review</a>
 						</div> -->
-						<hr>
-						<div class="row">
-							<div class="col-md-12">
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star-empty"></span>
-								Anonymous
-								<span class="pull-right">10 zile in urma</span>
-								<p>Un doctor excelent!</p>
-							</div>
+					<hr>
+					<div class="row">
+						<div class="col-md-12">
+							<span class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star-empty"></span> Anonymous <span
+								class="pull-right">10 zile in urma</span>
+							<p>Un doctor excelent!</p>
 						</div>
-						</hr>
-						<div class="row">
-							<div class="col-md-12">
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star-empty"></span>
-								Anonymous
-								<span class="pull-right">12 zile in urma</span>
-								<p>Cu siguranta voi reveni cand am probleme!</p>
-							</div>
+					</div>
+					</hr>
+					<div class="row">
+						<div class="col-md-12">
+							<span class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star-empty"></span> Anonymous <span
+								class="pull-right">12 zile in urma</span>
+							<p>Cu siguranta voi reveni cand am probleme!</p>
 						</div>
-						<!--<hr> -->
-						<div class="row">
-							<div class="col-md-12">
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star-empty"></span>
-								Anonymous
-								<span class="pull-right">15 zile in urma</span>
-								<p>Multumita de servicii!</p>
-							</div>
+					</div>
+					<!--<hr> -->
+					<div class="row">
+						<div class="col-md-12">
+							<span class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star-empty"></span> Anonymous <span
+								class="pull-right">15 zile in urma</span>
+							<p>Multumita de servicii!</p>
 						</div>
-					</div> 
+					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
 
-		<div class="container">		
-			<footer>
-				<div class="row">
-					<div class="col-lg-12">
-						<p>Copyright &copy; MEDDEX 2016</p>
-					</div>
+	<div class="container">
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					<p>Copyright &copy; MEDDEX 2016</p>
 				</div>
-			</footer>
-		</div>
-		<script src="js/jquery.js"></script>		
-		<script src="js/bootstrap.min.js"></script> 
+			</div>
+		</footer>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
 </body>
 

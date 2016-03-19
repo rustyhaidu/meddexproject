@@ -35,4 +35,10 @@ public class IMReviewDAO extends IMBaseDAO<Review> implements ReviewDAO {
 		return all;
 	}
 
+	@Override
+	public Collection<Review> findByDoctorID(Long doctorID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

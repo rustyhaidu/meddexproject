@@ -12,4 +12,5 @@ public interface ReviewDAO extends BaseDAO<Review> {
  * Not used
  */
 	Collection<Review> searchByName(String query);
+	Collection<Review> findByDoctorID(Long doctorID);
 }
