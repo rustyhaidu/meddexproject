@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import ro.sci.group5.dao.DoctorDao;
 import ro.sci.group5.domain.Doctor;
 
+
 /**
  * Pure JDBC implementation for {@link DoctorDao}.
  *
@@ -77,6 +78,9 @@ public class JDBCDoctorDAO implements DoctorDao {
 			}
 		}
 
+		/*for (Doctor neighbourhood:result){
+			System.out.println("JDBC neigh "+neighbourhood.getFirstName()+' '+neighbourhood.getId());
+		}*/
 		return result;
 	}
 

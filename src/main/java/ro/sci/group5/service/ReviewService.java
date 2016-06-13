@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.sci.group5.dao.ReviewDAO;
+import ro.sci.group5.dao.ReviewDao;
 import ro.sci.group5.domain.Doctor;
 import ro.sci.group5.domain.Review;
 
@@ -17,7 +17,7 @@ import ro.sci.group5.domain.Review;
 public class ReviewService {
 	@Autowired
 
-	private ReviewDAO reviewDao;
+	private ReviewDao reviewDao;
 
 	/**
 	 * Method used for saving and editing a link between a doctor and a review

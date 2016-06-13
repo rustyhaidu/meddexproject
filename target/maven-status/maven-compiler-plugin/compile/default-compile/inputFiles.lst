@@ -11,6 +11,7 @@ C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\domain\Revi
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\web\DoctorsOfHospitalController.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\dao\inmemory\IMHospitalDAO.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\db\JDBCReviewDAO.java
+C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\service\DoctorJSON.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\dao\LinkDoctorReviewDao.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\MeddexApplication.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\web\HospitalController.java
@@ -23,12 +24,16 @@ C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\web\DoctorC
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\dao\inmemory\IMReviewDAO.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\web\DoctorHospitalController.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\web\ReviewController.java
+C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\dao\NeighbourhoodDao.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\db\JDBCLinkDAO.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\db\JDBCLinkDHDAO.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\dao\LinkDoctorHospitalDao.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\db\JDBCDoctorDAO.java
-C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\dao\ReviewDAO.java
+C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\dao\ReviewDao.java
+C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\service\NeighbourhoodService.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\db\JDBCHospitalDAO.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\dao\inmemory\IMLinkDoctorReviewDAO.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\domain\AbstractModel.java
+C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\domain\Neighbourhood.java
 C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\dao\BaseDAO.java
+C:\Users\Claudiu\Documents\MeddexProject\src\main\java\ro\sci\group5\db\JDBCNeighbourhoodDAO.java

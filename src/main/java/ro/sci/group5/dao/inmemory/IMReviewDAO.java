@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import org.springframework.util.StringUtils;
 
-import ro.sci.group5.dao.ReviewDAO;
+import ro.sci.group5.dao.ReviewDao;
 import ro.sci.group5.domain.Review;
 
 /**
@@ -13,7 +13,7 @@ import ro.sci.group5.domain.Review;
  * objects.
  */
 // @Repository
-public class IMReviewDAO extends IMBaseDAO<Review> implements ReviewDAO {
+public class IMReviewDAO extends IMBaseDAO<Review> implements ReviewDao {
 	/**
 	 * Method not used.
 	 */

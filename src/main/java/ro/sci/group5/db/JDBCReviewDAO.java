@@ -11,14 +11,14 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ro.sci.group5.dao.ReviewDAO;
+import ro.sci.group5.dao.ReviewDao;
 import ro.sci.group5.domain.Review;
 
 /**
  * Pure JDBC implementation for {@link ReviewDao}.
  */
 
-public class JDBCReviewDAO implements ReviewDAO {
+public class JDBCReviewDAO implements ReviewDao {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JDBCDoctorDAO.class);
 
 	private String host;

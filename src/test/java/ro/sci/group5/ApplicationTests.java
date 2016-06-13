@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import ro.sci.group5.dao.DoctorDao;
 import ro.sci.group5.dao.LinkDoctorReviewDao;
-import ro.sci.group5.dao.ReviewDAO;
+import ro.sci.group5.dao.ReviewDao;
 import ro.sci.group5.dao.inmemory.IMDoctorDAO;
 import ro.sci.group5.dao.inmemory.IMLinkDoctorReviewDAO;
 import ro.sci.group5.dao.inmemory.IMReviewDAO;
@@ -29,7 +29,7 @@ public class ApplicationTests {
 	}
 
 	@Bean
-	public ReviewDAO reviewDao() {
+	public ReviewDao reviewDao() {
 		return new IMReviewDAO();
 		// new JDBCDoctorDAO("localhost", "5432", "test", "test", "test");
 	}

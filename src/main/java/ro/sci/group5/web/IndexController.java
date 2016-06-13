@@ -55,7 +55,7 @@ public class IndexController {
 		this.doctor.setDoctorEmail(doctor.getDoctorEmail());
 		this.doctor.setPhoneNumber(doctor.getPhoneNumber());
 		this.doctor.setHospital1(doctor.getHospital1());
-		this.doctor.setHospital1(doctor.getHospital2());
+		this.doctor.setHospital2(doctor.getHospital2());
 		this.doctor.setShowPhoneNumber(doctor.isShowPhoneNumber());
 		this.doctor.setShowPhoneNumber(doctor.isShowPhoneNumber());
 		this.doctor.setSpecialization1(doctor.getSpecialization1());

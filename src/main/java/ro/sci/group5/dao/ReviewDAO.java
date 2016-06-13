@@ -4,10 +4,10 @@ import java.util.Collection;
 
 import ro.sci.group5.domain.Review;
 /**
-* ReviewDAO interface extends BaseDAO methods, with Review object types instead of T.
+* ReviewDao interface extends BaseDAO methods, with Review object types instead of T.
 *
 */
-public interface ReviewDAO extends BaseDAO<Review> {
+public interface ReviewDao extends BaseDAO<Review> {
 /**
  * Not used
  */
