@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import ro.sci.group5.MeddexApplication;
+import ro.sci.group5.Main;
 import ro.sci.group5.domain.Hospital;
 import ro.sci.group5.domain.Doctor;
 import ro.sci.group5.service.HospitalService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = MeddexApplication.class)
+@SpringApplicationConfiguration(classes = Main.class)
 
 public class HospitalServiceTest {
 

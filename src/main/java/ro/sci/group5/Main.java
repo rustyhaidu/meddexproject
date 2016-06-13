@@ -31,9 +31,9 @@ import ro.sci.group5.db.JDBCReviewDAO;
 @EnableAutoConfiguration
 @ComponentScan
 
-public class MeddexApplication {
+public class Main {
 	public static void main(String[] args) {
-		SpringApplication.run(MeddexApplication.class, args);
+		SpringApplication.run(Main.class, args);
 	}
 
 	/**
