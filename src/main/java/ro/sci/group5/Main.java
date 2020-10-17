@@ -25,6 +25,21 @@ import ro.sci.group5.db.JDBCReviewDAO;
  * about doctors in Cluj. It offers you posibility to search for one doctor,
  * give and see reviews, to see doctors working in a given hospital and,
  * simulating an admin role, to add doctors to a certain hospital.
+ * 
+ * Host
+ * ec2-54-247-74-242.eu-west-1.compute.amazonaws.com
+ * Database
+ * d99eekict3mn03
+ * User
+ * ejfedfpmjbfdib
+ * Port
+ * 5432
+ * Password
+ * cf34750375320bc6d5ef1d9f26e39d9c4d56a858c6e5e9c8a6f5cb3048692c57
+ * URI
+ * postgres://ejfedfpmjbfdib:cf34750375320bc6d5ef1d9f26e39d9c4d56a858c6e5e9c8a6f5cb3048692c57@ec2-54-247-74-242.eu-west-1.compute.amazonaws.com:5432/d99eekict3mn03
+ * Heroku CLI
+ * heroku pg:psql postgresql-aerodynamic-13557 --app meddexproject
  */
 
 @Configuration
@@ -43,9 +58,8 @@ public class Main {
 	 */
 	@Bean
 	public DoctorDao doctorDao() {
-		return  //new JDBCDoctorDAO("localhost", "5432", "test", "test", "test"); 
-		new JDBCDoctorDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com", "5432", "d74krrcumptmn8",
-				"krqitchudqnhbc", "2AC2l0pO26pUmP-6kQprCguYQr");
+		return // new JDBCDoctorDAO("localhost", "5432", "test", "test", "test");
+		new JDBCDoctorDAO("ec2-54-247-74-242.eu-west-1.compute.amazonaws.com", "5432", "d99eekict3mn03","ejfedfpmjbfdib", "cf34750375320bc6d5ef1d9f26e39d9c4d56a858c6e5e9c8a6f5cb3048692c57");
 
 	}
 
@@ -56,9 +70,8 @@ public class Main {
 	 */
 	@Bean
 	public ReviewDao reviewDao() {
-		return  //new JDBCReviewDAO("localhost", "5432", "test", "test", "test");
-		 new JDBCReviewDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com", "5432", "d74krrcumptmn8",
-				"krqitchudqnhbc", "2AC2l0pO26pUmP-6kQprCguYQr");
+		return // new JDBCReviewDAO("localhost", "5432", "test", "test", "test");
+		 new JDBCReviewDAO("ec2-54-247-74-242.eu-west-1.compute.amazonaws.com", "5432", "d99eekict3mn03","ejfedfpmjbfdib", "cf34750375320bc6d5ef1d9f26e39d9c4d56a858c6e5e9c8a6f5cb3048692c57");
 
 	}
 
@@ -69,9 +82,8 @@ public class Main {
 	 */
 	@Bean
 	public LinkDoctorReviewDao linkDao() {
-		return  // new JDBCLinkDAO("localhost", "5432", "test", "test", "test"); 
-		new JDBCLinkDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com", "5432", "d74krrcumptmn8",
-				"krqitchudqnhbc", "2AC2l0pO26pUmP-6kQprCguYQr");
+		return  // new JDBCLinkDAO("localhost", "5432", "test", "test", "test");
+		new JDBCLinkDAO("ec2-54-247-74-242.eu-west-1.compute.amazonaws.com", "5432", "d99eekict3mn03","ejfedfpmjbfdib", "cf34750375320bc6d5ef1d9f26e39d9c4d56a858c6e5e9c8a6f5cb3048692c57");
 	}
 	/**
 	 * Shows connection details from either local machine or heroku database
@@ -80,23 +92,20 @@ public class Main {
 	 */
 	@Bean
 	public HospitalDao hospitalDao() {
-		return  //new JDBCHospitalDAO("localhost", "5432", "test", "test", "test");
-		new JDBCHospitalDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com", "5432", "d74krrcumptmn8",
-				"krqitchudqnhbc", "2AC2l0pO26pUmP-6kQprCguYQr");
+		return //  new JDBCHospitalDAO("localhost", "5432", "test", "test", "test");
+		new JDBCHospitalDAO("ec2-54-247-74-242.eu-west-1.compute.amazonaws.com", "5432", "d99eekict3mn03","ejfedfpmjbfdib", "cf34750375320bc6d5ef1d9f26e39d9c4d56a858c6e5e9c8a6f5cb3048692c57");
 
 	}
 
 	@Bean
 	public LinkDoctorHospitalDao linkDHDao() {
-		return  //new JDBCLinkDHDAO("localhost", "5432", "test", "test", "test");
-		new JDBCLinkDHDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com", "5432", "d74krrcumptmn8",
-				"krqitchudqnhbc", "2AC2l0pO26pUmP-6kQprCguYQr");
+		return // new JDBCLinkDHDAO("localhost", "5432", "test", "test", "test");
+		new JDBCLinkDHDAO("ec2-54-247-74-242.eu-west-1.compute.amazonaws.com", "5432", "d99eekict3mn03","ejfedfpmjbfdib", "cf34750375320bc6d5ef1d9f26e39d9c4d56a858c6e5e9c8a6f5cb3048692c57");
 
 	}
 	@Bean
 	public NeighbourhoodDao neighbourhoodDao() {
-		return   //new JDBCNeighbourhoodDAO("localhost", "5432", "test", "test", "test"); 
-		new JDBCNeighbourhoodDAO("ec2-54-217-208-102.eu-west-1.compute.amazonaws.com", "5432", "d74krrcumptmn8",
-				"krqitchudqnhbc", "2AC2l0pO26pUmP-6kQprCguYQr");
+		return   // new JDBCNeighbourhoodDAO("localhost", "5432", "test", "test", "test");
+		new JDBCNeighbourhoodDAO("ec2-54-247-74-242.eu-west-1.compute.amazonaws.com", "5432", "d99eekict3mn03","ejfedfpmjbfdib", "cf34750375320bc6d5ef1d9f26e39d9c4d56a858c6e5e9c8a6f5cb3048692c57");
 	}
 }
