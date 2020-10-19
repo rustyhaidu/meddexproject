@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ro.sci.group5.domain.Hospital;
 import ro.sci.group5.service.HospitalService;
+import ro.sci.group5.service.NeighbourhoodService;
 
 /**
  * This class is used for rendering the hospital_list and hospital_edit pages
@@ -21,6 +22,8 @@ import ro.sci.group5.service.HospitalService;
 public class HospitalController {
 	@Autowired
 	HospitalService hospitalService;
+	@Autowired
+	NeighbourhoodService neighbourhoodService;
 
 	/**
 	 * Method used for creating a view with all the available hospitals
@@ -30,6 +33,7 @@ public class HospitalController {
 	@RequestMapping("")
 	public ModelAndView list() {
 		ModelAndView view = new ModelAndView("hospital_list");
+		view.addObject("neighbourhoods",neighbourhoodService.listAll());
 		view.addObject("hospitals", hospitalService.listAll());
 		return view;
 	}

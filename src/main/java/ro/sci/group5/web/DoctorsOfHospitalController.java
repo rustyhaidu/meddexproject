@@ -13,6 +13,7 @@ import ro.sci.group5.domain.LinkDoctorReview;
 import ro.sci.group5.service.DoctorService;
 import ro.sci.group5.service.HospitalService;
 import ro.sci.group5.service.LinkDHService;
+import ro.sci.group5.service.NeighbourhoodService;
 
 /**
  * This class is used for rendering the doctorsOfTheHospital page
@@ -28,6 +29,8 @@ public class DoctorsOfHospitalController {
 	DoctorService doctorService;
 	@Autowired
 	LinkDHService linkDHService;
+	@Autowired
+	NeighbourhoodService neighbourhoodService;
 
 	/**
 	 * Method used for creating a view with all the available doctors of a
@@ -39,6 +42,7 @@ public class DoctorsOfHospitalController {
 	@RequestMapping("")
 	public ModelAndView list(Long hospitalID) {
 		ModelAndView view = new ModelAndView("doctorsOfTheHospital");
+		view.addObject("neighbourhoods",neighbourhoodService.listAll());
 
 		Hospital hospital = new Hospital();
 		if (hospitalID != null) {

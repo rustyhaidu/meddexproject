@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ro.sci.group5.domain.Doctor;
 import ro.sci.group5.service.DoctorService;
 import ro.sci.group5.service.HospitalService;
+import ro.sci.group5.service.NeighbourhoodService;
 import ro.sci.group5.service.ReviewService;
 
 /**
@@ -24,6 +25,8 @@ public class IndexController {
 	HospitalService hospitalService;
 	@Autowired
 	ReviewService reviewService;
+	@Autowired
+	NeighbourhoodService neighbourhoodService;
 
 	Doctor doctor = new Doctor();
 
@@ -35,6 +38,7 @@ public class IndexController {
 	@RequestMapping("")
 	public ModelAndView index() {
 		ModelAndView view = new ModelAndView("index");
+		view.addObject("neighbourhoods",neighbourhoodService.listAll());
 		view.addObject(doctor);
 
 		return view;

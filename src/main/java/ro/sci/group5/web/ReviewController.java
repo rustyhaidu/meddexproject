@@ -13,6 +13,7 @@ import ro.sci.group5.domain.LinkDoctorReview;
 import ro.sci.group5.domain.Review;
 import ro.sci.group5.service.DoctorService;
 import ro.sci.group5.service.LinkService;
+import ro.sci.group5.service.NeighbourhoodService;
 import ro.sci.group5.service.ReviewService;
 
 /**
@@ -28,6 +29,8 @@ public class ReviewController {
 	DoctorService doctorService;
 	@Autowired
 	LinkService linkService;
+	@Autowired
+	NeighbourhoodService neighbourhoodService;
 
 	/**
 	 * Method used for creating a view with all the available reviews of a
@@ -45,6 +48,7 @@ public class ReviewController {
 
 		result.addObject("doctor", doctor);
 		result.addObject("reviews", reviewService.findByDoctorID(doctorID));
+		result.addObject("neighbourhoods",neighbourhoodService.listAll());
 		/*result.addObject("reviews", reviewService.findById(doctorID));*/
 		return result;
 	}

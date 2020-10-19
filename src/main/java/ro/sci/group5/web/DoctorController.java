@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ro.sci.group5.domain.Doctor;
 import ro.sci.group5.service.DoctorService;
+import ro.sci.group5.service.NeighbourhoodService;
 
 /**
  * This class is used for rendering the doctor_list and doctor_edit pages
@@ -21,6 +22,8 @@ import ro.sci.group5.service.DoctorService;
 public class DoctorController {
 	@Autowired
 	DoctorService doctorService;
+	@Autowired
+	NeighbourhoodService neighbourhoodService;
 
 	/**
 	 * Method used for creating a view with all the available doctors
@@ -31,6 +34,7 @@ public class DoctorController {
 	public ModelAndView list() {
 		ModelAndView view = new ModelAndView("doctor_list");
 		view.addObject("doctors", doctorService.listAll());
+		view.addObject("neighbourhoods",neighbourhoodService.listAll());
 		return view;
 	}
 
@@ -65,6 +69,7 @@ public class DoctorController {
 	@RequestMapping("/doctor_edit")
 	public ModelAndView renderEditPage(Long id) {
 		ModelAndView result = new ModelAndView("doctor_edit");
+		result.addObject("neighbourhoods",neighbourhoodService.listAll());
 		Doctor doctor = new Doctor();
 		if (id != null) {
 			doctor = doctorService.findById(id);
