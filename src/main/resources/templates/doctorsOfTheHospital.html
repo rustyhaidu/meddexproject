@@ -78,12 +78,15 @@
 								Spital</option>
 							<option>Boli Infectioase</option>
 							<option>Neurologie</option>
-						</select> <br /> <select class="list-group-item active">
-							<option selected="true" style="display: none;">Selecteaza
-								Cartier</option>
-							<option>Centru</option>
-							<option>Manastur</option>
 						</select> <br />
+
+						<select class="list-group-item active">
+							<option  th:each="neighbourhood : ${neighbourhoods}"
+									 th:value="${{neighbourhood.id}}"
+									 th:text="${{neighbourhood.neighbourhoodName}}"></option>
+						</select>
+
+						<br />
 						<h3>Stele</h3>
 						<input type="checkbox" name="vehicle" value="checkNumber" />Stea
 						1 <br /> <input type="checkbox" name="vehicle" value="checkNumber" />Stea
