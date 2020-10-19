@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import ro.sci.group5.dao.LinkDoctorHospitalDao;
 import ro.sci.group5.dao.LinkDoctorReviewDao;
 import ro.sci.group5.domain.Doctor;
+import ro.sci.group5.domain.JDBCConnection;
 import ro.sci.group5.domain.LinkDoctorHospital;
 import ro.sci.group5.domain.LinkDoctorReview;
 
@@ -23,38 +24,13 @@ import ro.sci.group5.domain.LinkDoctorReview;
  * 
  *
  */
-public class JDBCLinkDHDAO implements LinkDoctorHospitalDao {
+public class JDBCLinkDHDAO extends JDBCAbstractDAO implements LinkDoctorHospitalDao {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JDBCDoctorDAO.class);
 
-	private String host;
-	private String port;
-	private String dbName;
-	private String userName;
-	private String pass;
-
-	/**
-	 * Constructor
-	 */
-	public JDBCLinkDHDAO() {
-		super();
+	public JDBCLinkDHDAO(JDBCConnection jdbcConnection) {
+		super(jdbcConnection);
 	}
 
-	/**
-	 * Construct with connection input
-	 * 
-	 * @param host
-	 * @param port
-	 * @param dbName
-	 * @param userName
-	 * @param pass
-	 */
-	public JDBCLinkDHDAO(String host, String port, String dbName, String userName, String pass) {
-		this.host = host;
-		this.userName = userName;
-		this.pass = pass;
-		this.port = port;
-		this.dbName = dbName;
-	}
 
 	/**
 	 * This method returns all the LinkDoctorReview from link_doctor_review
@@ -183,44 +159,6 @@ public class JDBCLinkDHDAO implements LinkDoctorHospitalDao {
 	 * @return
 	 */
 
-	protected Connection newConnection() {
-		try {
-			Class.forName("org.postgresql.Driver").newInstance();
-
-			String url = new StringBuilder().append("jdbc:").append("postgresql").append("://").append(host).append(":")
-					.append(port).append("/").append(dbName).append("?user=").append(userName).append("&password=")
-					.append(pass).toString();
-			Connection result = DriverManager.getConnection(url);
-			result.setAutoCommit(false);
-
-			return result;
-		} catch (Exception ex) {
-			throw new RuntimeException("Error getting DB connection", ex);
-		}
-
-	}
-
-	private Doctor extractDoctor(ResultSet rs) throws SQLException {
-		Doctor doctor = new Doctor();
-		doctor.setId(rs.getLong("id"));
-		doctor.setFirstName(rs.getString("first_name"));
-		doctor.setLastName(rs.getString("last_name"));
-		doctor.setHospital1(rs.getString("hospital1"));
-		doctor.setHospital2(rs.getString("hospital2"));
-		doctor.setTitleDoctor(rs.getString("title_doctor"));
-		doctor.setPhoneNumber(rs.getString("phone_number"));
-		doctor.setDoctorEmail(rs.getString("doctor_email"));
-		doctor.setShowPhoneNumber(rs.getBoolean("show_phone_number"));
-		doctor.setShowEmail(rs.getBoolean("show_email"));
-		doctor.setSpecialization1(rs.getString("specialization1"));
-		doctor.setSpecialization1(rs.getString("specialization2"));
-
-		return doctor;
-	}
-
-	/**
-	 * Not used.
-	 */
 	@Override
 	public boolean delete(LinkDoctorHospital model) {
 		// TODO Auto-generated method stub

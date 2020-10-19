@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ro.sci.group5.dao.LinkDoctorReviewDao;
+import ro.sci.group5.domain.JDBCConnection;
 import ro.sci.group5.domain.LinkDoctorReview;
 
 /**
@@ -20,37 +21,11 @@ import ro.sci.group5.domain.LinkDoctorReview;
  * 
  *
  */
-public class JDBCLinkDAO implements LinkDoctorReviewDao {
+public class JDBCLinkDAO extends JDBCAbstractDAO implements LinkDoctorReviewDao {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JDBCDoctorDAO.class);
 
-	private String host;
-	private String port;
-	private String dbName;
-	private String userName;
-	private String pass;
-
-	/**
-	 * Constructor
-	 */
-	public JDBCLinkDAO() {
-		super();
-	}
-
-	/**
-	 * Construct with connection input
-	 * 
-	 * @param host
-	 * @param port
-	 * @param dbName
-	 * @param userName
-	 * @param pass
-	 */
-	public JDBCLinkDAO(String host, String port, String dbName, String userName, String pass) {
-		this.host = host;
-		this.userName = userName;
-		this.pass = pass;
-		this.port = port;
-		this.dbName = dbName;
+	public JDBCLinkDAO(JDBCConnection jdbcConnection) {
+		super(jdbcConnection);
 	}
 
 	/**
@@ -177,23 +152,6 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 	 * 
 	 * @return
 	 */
-
-	protected Connection newConnection() {
-		try {
-			Class.forName("org.postgresql.Driver").newInstance();
-
-			String url = new StringBuilder().append("jdbc:").append("postgresql").append("://").append(host).append(":")
-					.append(port).append("/").append(dbName).append("?user=").append(userName).append("&password=")
-					.append(pass).toString();
-			Connection result = DriverManager.getConnection(url);
-			result.setAutoCommit(false);
-
-			return result;
-		} catch (Exception ex) {
-			throw new RuntimeException("Error getting DB connection", ex);
-		}
-
-	}
 
 	private LinkDoctorReview extractReview(ResultSet rs) throws SQLException {
 		LinkDoctorReview link = new LinkDoctorReview();

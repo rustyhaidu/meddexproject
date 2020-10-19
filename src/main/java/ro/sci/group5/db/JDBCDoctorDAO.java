@@ -13,44 +13,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ro.sci.group5.dao.DoctorDao;
 import ro.sci.group5.domain.Doctor;
+import ro.sci.group5.domain.JDBCConnection;
 
 
 /**
  * Pure JDBC implementation for {@link DoctorDao}.
  *
  */
-public class JDBCDoctorDAO implements DoctorDao {
+public class JDBCDoctorDAO extends JDBCAbstractDAO implements DoctorDao {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JDBCDoctorDAO.class);
 
-	private String host;
-	private String port;
-	private String dbName;
-	private String userName;
-	private String pass;
-
-	/**
-	 * Constructor
-	 */
-	public JDBCDoctorDAO() {
-		super();
+	public JDBCDoctorDAO(JDBCConnection jdbcConnection) {
+		super(jdbcConnection);
 	}
 
-	/**
-	 * Construct with connection input
-	 * 
-	 * @param host
-	 * @param port
-	 * @param dbName
-	 * @param userName
-	 * @param pass
-	 */
-	public JDBCDoctorDAO(String host, String port, String dbName, String userName, String pass) {
-		this.host = host;
-		this.userName = userName;
-		this.pass = pass;
-		this.port = port;
-		this.dbName = dbName;
-	}
 
 	/**
 	 * This method returns all the doctors from doctors table in DB.
@@ -240,28 +216,6 @@ public class JDBCDoctorDAO implements DoctorDao {
 		}
 
 		return result;
-	}
-
-	/**
-	 * Connection to postgresql database
-	 * 
-	 * @return
-	 */
-	protected Connection newConnection() {
-		try {
-			Class.forName("org.postgresql.Driver").newInstance();
-
-			String url = new StringBuilder().append("jdbc:").append("postgresql").append("://").append(host).append(":")
-					.append(port).append("/").append(dbName).append("?user=").append(userName).append("&password=")
-					.append(pass).toString();
-			Connection result = DriverManager.getConnection(url);
-			result.setAutoCommit(false);
-
-			return result;
-		} catch (Exception ex) {
-			throw new RuntimeException("Error getting DB connection", ex);
-		}
-
 	}
 
 	private Doctor extractDoctor(ResultSet rs) throws SQLException {
