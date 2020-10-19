@@ -53,7 +53,7 @@ public class JDBCNeighbourhoodDAO implements NeighbourhoodDao {
 
 		Collection<Neighbourhood> result = new LinkedList<>();
 
-		try (ResultSet rs = connection.createStatement().executeQuery("select * from neighbourhoods")) {
+		try (ResultSet rs = connection.createStatement().executeQuery("select * from neighbourhoods;")) {
 
 			while (rs.next()) {
 				result.add(extractNeighbourhood(rs));
@@ -222,7 +222,7 @@ public class JDBCNeighbourhoodDAO implements NeighbourhoodDao {
 		Neighbourhood Neighbourhood = new Neighbourhood();
 		
 		Neighbourhood.setId(rs.getLong("id"));
-		Neighbourhood.setNeighbourhoodName(rs.getString("Neighbourhood_name"));
+		Neighbourhood.setNeighbourhoodName(rs.getString("neighbourhoodname"));
 		
 		return Neighbourhood;
 	}
