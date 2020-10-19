@@ -69,7 +69,7 @@ public class JDBCDoctorDAO implements DoctorDao {
 			connection.commit();
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error getting doctors ind DoctorDAO.", ex);
 		} finally {
 			try {
 				connection.close();
@@ -104,7 +104,7 @@ public class JDBCDoctorDAO implements DoctorDao {
 			connection.commit();
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error getting doctors by id.", ex);
 		} finally {
 			try {
 				connection.close();
@@ -168,7 +168,7 @@ public class JDBCDoctorDAO implements DoctorDao {
 
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error updating doctor.", ex);
 		} finally {
 			try {
 				connection.close();
@@ -236,7 +236,7 @@ public class JDBCDoctorDAO implements DoctorDao {
 			connection.commit();
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error getting doctors by name in DoctorDAO.", ex);
 		}
 
 		return result;

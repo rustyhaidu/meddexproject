@@ -61,7 +61,7 @@ public class JDBCNeighbourhoodDAO implements NeighbourhoodDao {
 			connection.commit();
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error getting neighbourhoods in NeighbourhoodDAO.", ex);
 		} finally {
 			try {
 				connection.close();
@@ -91,7 +91,7 @@ public class JDBCNeighbourhoodDAO implements NeighbourhoodDao {
 			connection.commit();
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error getting neighbourhood by id in JDBCNeighbourhoodDAO.", ex);
 		} finally {
 			try {
 				connection.close();

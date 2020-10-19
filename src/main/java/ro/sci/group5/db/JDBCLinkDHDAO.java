@@ -19,7 +19,7 @@ import ro.sci.group5.domain.LinkDoctorHospital;
 import ro.sci.group5.domain.LinkDoctorReview;
 
 /**
- * Pure JDBC implementation for {@link ReviewDao}.
+ * Pure JDBC implementation for {@link ro.sci.group5.dao.ReviewDao}.
  * 
  *
  */
@@ -90,7 +90,7 @@ public class JDBCLinkDHDAO implements LinkDoctorHospitalDao {
 	 * This method returns the links from link_doctor_review table in DB, based
 	 * on id.
 	 * 
-	 * @param id
+	 * @param doctorID
 	 * @return 
 	 */
 	@Override

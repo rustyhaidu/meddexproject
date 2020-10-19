@@ -102,7 +102,7 @@ public class JDBCReviewDAO implements ReviewDao {
 			connection.commit();
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error getting doctors in JDBCReviewDAO.", ex);
 		} finally {
 			try {
 				connection.close();
@@ -162,7 +162,7 @@ public class JDBCReviewDAO implements ReviewDao {
 
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error updating review in JDBCReviewDAO.", ex);
 		} finally {
 			try {
 				connection.close();
@@ -242,7 +242,7 @@ public class JDBCReviewDAO implements ReviewDao {
 			connection.commit();
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error getting doctors by id for reviews.", ex);
 		} finally {
 			try {
 				connection.close();

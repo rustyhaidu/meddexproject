@@ -16,7 +16,7 @@ import ro.sci.group5.dao.LinkDoctorReviewDao;
 import ro.sci.group5.domain.LinkDoctorReview;
 
 /**
- * Pure JDBC implementation for {@link ReviewDao}.
+ * Pure JDBC implementation for {@link ro.sci.group5.dao.ReviewDao}.
  * 
  *
  */
@@ -160,7 +160,7 @@ public class JDBCLinkDAO implements LinkDoctorReviewDao {
 
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error updating LinkDoctorReview in JDBCLinkDAO.", ex);
 		} finally {
 			try {
 				connection.close();

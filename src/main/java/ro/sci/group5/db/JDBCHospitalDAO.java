@@ -61,7 +61,7 @@ public class JDBCHospitalDAO implements HospitalDao {
 			connection.commit();
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error getting hospitals in JDBCHospitalDAO.", ex);
 		} finally {
 			try {
 				connection.close();
@@ -87,7 +87,7 @@ public class JDBCHospitalDAO implements HospitalDao {
 			connection.commit();
 		} catch (SQLException ex) {
 
-			throw new RuntimeException("Error getting doctors.", ex);
+			throw new RuntimeException("Error getting hospitals.", ex);
 		} finally {
 			try {
 				connection.close();
