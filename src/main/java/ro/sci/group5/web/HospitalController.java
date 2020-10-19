@@ -79,6 +79,7 @@ public class HospitalController {
 			hospital = hospitalService.findById(id);
 		}
 		result.addObject("hospital", hospital);
+		result.addObject("neighbourhoods",neighbourhoodService.listAll());
 		return result;
 	}
 
