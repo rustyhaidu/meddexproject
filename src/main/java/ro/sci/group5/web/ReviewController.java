@@ -52,7 +52,7 @@ public class ReviewController {
 	/**
 	 * Method used for saving a review
 	 * 
-	 * @param Review
+	 * @param review
 	 *            and BindingResult used for handling exceptions
 	 * @return ModelAndView
 	 */

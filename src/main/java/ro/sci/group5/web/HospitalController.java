@@ -63,8 +63,7 @@ public class HospitalController {
 	/**
 	 * Method used for rendering the hospital_edit page
 	 * 
-	 * @param Long
-	 *            id
+	 * @param id
 	 * @return ModelAndView
 	 */
 

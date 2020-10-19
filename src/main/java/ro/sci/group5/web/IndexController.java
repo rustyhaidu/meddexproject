@@ -43,7 +43,7 @@ public class IndexController {
 	/**
 	 * Method used for saving or editing a doctor
 	 * 
-	 * @param Doctor
+	 * @param doctor
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.POST, params = "action=add")

@@ -33,7 +33,7 @@ public class DoctorsOfHospitalController {
 	 * Method used for creating a view with all the available doctors of a
 	 * hospital
 	 * 
-	 * @param id
+	 * @param hospitalID
 	 * @return ModelAndView
 	 */
 	@RequestMapping("")

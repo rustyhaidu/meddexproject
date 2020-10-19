@@ -37,7 +37,7 @@ public class DoctorController {
 	/**
 	 * Method used for saving or editing a doctor
 	 * 
-	 * @param Doctor
+	 * @param doctor
 	 *            and BindingResult used for handling exceptions
 	 * @return ModelAndView
 	 */
@@ -59,7 +59,7 @@ public class DoctorController {
 	/**
 	 * Method used for rendering the doctor_edit page
 	 * 
-	 * @param Long
+	 * @param id
 	 * @return ModelAndView
 	 */
 	@RequestMapping("/doctor_edit")
@@ -76,7 +76,7 @@ public class DoctorController {
 	/**
 	 * Method used for displaying doctors which are returned after search
 	 * 
-	 * @param String
+	 * @param query
 	 *            (in firstName and LastName)
 	 * @return ModelAndView
 	 */
